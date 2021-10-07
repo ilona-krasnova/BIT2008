@@ -18,6 +18,11 @@ hr {
     margin-bottom:  2%;
 }
 
-#userinfo {
-    white-space: nowrap;
+form {
+    margin-bottom: 2%;
+}
+
+#tagline {
+    text-align: center;
+    font-weight: normal;
 }
