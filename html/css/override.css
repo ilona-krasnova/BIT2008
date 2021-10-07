@@ -1,0 +1,23 @@
+div.ui.menu {
+    background-color: #9BD6CF;
+    color: black;
+}
+i.bars.icon {
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+article {
+    padding: 5%;
+}
+
+hr {
+    margin-bottom:  2%;
+}
+
+#userinfo {
+    white-space: nowrap;
+}

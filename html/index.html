@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html">
+
+    <title>BIT2400 Seed Exchange</title>
+    <meta name="description" content="Exchange you seeds with other local gardeners!" />
+    <meta name="keywords" content="seed, exchange, Carleton, BIT2400" />
+    <meta name="author" content="Book Club 2: The SQL">
+
+    <!-- libraries -->
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="lib/semantic-ui-2.4.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/semantic-ui-2.4.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/override.css" />
+
+    <script>
+        $().ready(() => {
+          $('.ui.dropdown').dropdown();
+        })
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="ui menu">
+            <div class="ui dropdown item" tabindex="0">
+                <i class="large bars icon"></i>
+                <div class="menu" tabindex="-1">
+                    <div class="item" id="userinfo">
+                        <h3>Username</h3>
+                        View account</div>
+                    <div class="item"><i class="plus icon"></i>Add listing</div>
+                    <div class="item"><i class="exchange icon"></i>Exchanges</div>
+                    <div class="item"><i class="heart icon"></i>Favourites</div>
+                    <div class="divider"></div>
+                    <div class="item"><i class="life ring icon"></i>Help</div>
+                    <div class="divider"></div>
+                    <div class="item">Sign Out</div>
+                </div>
+            </div>
+            <div class="header item">SEED + SHARE</div>
+            <img src="img/logo.png" height="45" />
+            <div class="right menu">
+                <a class="item"><i class="large user circle outline icon"></i>Sign In</a>
+                <div class="item">
+                    <div class="ui action left icon input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <article>
+        <h1 class="ui header">Seed + Share</h1>
+        <hr/>
+        <div class="ui four stackable cards">
+            <div class="card">
+              <div class="image">
+                <img src="img/herbs.jpg">
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="img/vegetables.jpg">
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="img/flowers.jpg">
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="img/cannabis.jpg">
+              </div>
+            </div>
+        </div>
+        <h1 class="ui header">Featured Seeds</h1>
+        <hr/>
+        <div class="ui four stackable cards">
+            <div class="card">
+              <div class="image">
+                <img src="img/featured1.jpg">
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="img/featured3.jpg">
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="img/featured4.jpg">
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="img/featured2.jpg">
+              </div>
+            </div>
+        </div>
+    </article>
+</body>
+
+</html>
