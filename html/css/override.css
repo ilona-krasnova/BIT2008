@@ -50,3 +50,7 @@ form {
 #messageButton {
     background-color: #274393;
 }
+
+a.ui.card {
+    color: black;
+}
