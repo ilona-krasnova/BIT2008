@@ -26,3 +26,14 @@ form {
     text-align: center;
     font-weight: normal;
 }
+
+#exchSymbol {
+    display:inline-block;
+    color: #9BD6CF;
+    margin-top: 1em;
+    text-align: center;
+}
+
+#report {
+    margin-top: 5px;
+}
