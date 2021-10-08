@@ -54,3 +54,25 @@ form {
 a.ui.card {
     color: black;
 }
+
+/* Centered text */
+.indextext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.5em;
+}
+
+.indextext:hover {
+    color: lightgrey;
+}
+
+#titleheader {
+    font-size: 3em;
+}
+
+div.ui.four.stackable.cards{
+    margin-bottom: 2%;
+}
