@@ -37,3 +37,16 @@ form {
 #report {
     margin-top: 5px;
 }
+
+#bio {
+    font-weight: normal;
+}
+
+#newSeedDidactic {
+    font-weight: normal;
+    margin-top: 1em;
+}
+
+#messageButton {
+    background-color: #274393;
+}

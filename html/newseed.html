@@ -36,7 +36,7 @@
           <div class="menu" tabindex="-1">
             <div class="item" id="userinfo">
               <h3>Blossom12</h3>
-              View account
+              <a href="user.html">View account</a>
             </div>
             <a class="item" href="catalogue.html"><i class="leaf icon"></i>Explore</a>
             <a class="item" href="newseed.html"><i class="plus icon"></i>Add listing</a>
@@ -55,7 +55,7 @@
 
         <div class="right menu">
           <!-- user welcome -->
-          <a class="item">Hello, Blossom12!</a>
+          <a class="item" href="user.html">Hello, Blossom12!</a>
           <!-- search bar -->
           <div class="item">
             <div class="ui action left icon input">
@@ -70,88 +70,83 @@
     <article style="position: relative;">
       <h1 class="ui header">New Listing</h1>
       <hr />
-      <div class="ui segment">
-        <div class="ui two column very relaxed grid">
-          <div class="column">
-            <form class="ui form">
-              <div class="field">
-                <input type="text" name="SeedName" placeholder="Name / Variety">
-              </div>
-              <div class="field">
-                <input type="text" name="quantity" placeholder="Quantity (weight in g or seed count)">
-              </div>
-              <select name="type" class="ui dropdown">
-                <option value="">Type</option>
-                <option value="0">Herb</option>
-                <option value="1">Vegetable</option>
-                <option value="2">Flower</option>
-                <option value="3">Cannabis</option>
-              </select>
-              <select name="lifeCycle" class="ui dropdown">
-                <option value="">Life Cycle</option>
-                <option value="0">Annual</option>
-                <option value="1">Biennial</option>
-                <option value="2">Perennial</option>
-              </select>
-              <select name="sunRequirements" class="ui dropdown">
-                <option value="">Sun Requirements</option>
-                <option value="0">Full sun</option>
-                <option value="1">Part sun</option>
-                <option value="2">Part shade</option>
-                <option value="3">Shade</option>
-              </select>
-              <select name="maintenance" class="ui dropdown">
-                <option value="">Maintenance</option>
-                <option value="0">Low</option>
-                <option value="1">Medium</option>
-                <option value="2">High</option>
-              </select>
-              <select multiple="" class="ui dropdown">
-                <option value="">Hardiness Zone</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
-              <div class="field">
-                <textarea></textarea>
-              </div>
-              <button class="ui button" type="submit">
-                  Submit
-              </button>
-            </form>
-          </div>
-          <div class="column">
 
-            <div class="ui centered card">
-              <div class="content">
-                <div class="right floated meta">Example</div>
-                <img class="ui avatar image" src="img/profilepicture.jpg"> French Marigold
-              </div>
-              <div class="image">
-                <img src="img/marigold.jpg" alt="French Marigold">
-              </div>
-              <div class="content">
-                <p>Weight 10g</p>
-                <p>Type: Flowers</p>
-                <p>Life Cycle: Annual</p>
-                <p>Sun Requirements: Full sun</p>
-                <p>Maintenance: Low</p>
-                <p>Hardiness Zone: 2, 3, 4, 5, 6, 7, 8, 9</p>
-                Description:
-              </div>
+      <div class="ui centered grid">
+        <div class="six wide column">
+          <h3 id="newSeedDidactic">Create a detailed listing to help other users find your seeds!</h3>
+          <form class="ui form">
+            <div class="field">
+              <input type="text" name="SeedName" placeholder="Name / Variety">
             </div>
-
-          </div>
+            <div class="field">
+              <input type="text" name="quantity" placeholder="Quantity (weight in g or seed count)">
+            </div>
+            <select name="type" class="ui dropdown">
+              <option value="">Type</option>
+              <option value="0">Herb</option>
+              <option value="1">Vegetable</option>
+              <option value="2">Flower</option>
+              <option value="3">Cannabis</option>
+            </select>
+            <select name="lifeCycle" class="ui dropdown">
+              <option value="">Life Cycle</option>
+              <option value="0">Annual</option>
+              <option value="1">Biennial</option>
+              <option value="2">Perennial</option>
+            </select>
+            <select name="sunRequirements" class="ui dropdown">
+              <option value="">Sun Requirements</option>
+              <option value="0">Full sun</option>
+              <option value="1">Part sun</option>
+              <option value="2">Part shade</option>
+              <option value="3">Shade</option>
+            </select>
+            <select name="maintenance" class="ui dropdown">
+              <option value="">Maintenance</option>
+              <option value="0">Low</option>
+              <option value="1">Medium</option>
+              <option value="2">High</option>
+            </select>
+            <select multiple="" class="ui dropdown">
+              <option value="">Hardiness Zone</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+            <div class="field">
+              <textarea></textarea>
+            </div>
+            <button class="ui button" type="submit">
+                Submit
+            </button>
+          </form>
         </div>
-        <div class="ui vertical divider">
-          example >
+        <div class="six wide column">
+          <div class="ui centered card">
+            <div class="content">
+              <div class="right floated meta">Example</div>
+              <img class="ui avatar image" src="img/profilepicture.jpg"> French Marigold
+            </div>
+            <div class="image">
+              <img src="img/marigold.jpg" alt="French Marigold">
+            </div>
+            <div class="content">
+              <p>Weight 10g</p>
+              <p>Type: Flowers</p>
+              <p>Life Cycle: Annual</p>
+              <p>Sun Requirements: Full sun</p>
+              <p>Maintenance: Low</p>
+              <p>Hardiness Zone: 2, 3, 4, 5, 6, 7, 8, 9</p>
+              Description:
+            </div>
+          </div>
         </div>
       </div>
     </article>
