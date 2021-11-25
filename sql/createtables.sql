@@ -11,7 +11,9 @@ CREATE TABLE `BC_UserAddress` (
     `UserID` BIGINT NOT NULL , 
     `Address` VARCHAR(256) NOT NULL ,
     `PostalCode` VARCHAR(7) NOT NULL ,
-    PRIMARY KEY (`ID`)
+    PRIMARY KEY (`ID`) ,
+    FOREIGN KEY (`UserID`) REFERENCES BC_User(ID) ,
+
 ) ENGINE = InnoDB;
 
 -- Seed Lookups
