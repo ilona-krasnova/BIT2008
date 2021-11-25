@@ -4,7 +4,7 @@
     $users = exeSelect($dblink, "SELECT ID, Username, Email, PasswordHash FROM BC_User");
     foreach ($users as $user) {
        echo $user['Username'] . "<br>";
-     }
+    }
     include('exchange1.html');
 ?>
 

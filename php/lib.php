@@ -17,4 +17,15 @@ function exeSelect($dblink, $sql)
     }
     return $res;
 }
+
+// returns number of days until given date
+function daysFromDate($dateStr)
+{
+    $date=strtotime($dateStr); // number of seconds from 1970
+    $today=strtotime(date("Y-m-d"));
+    $result = round(($today - $date) / (24 * 60 * 60)); // converted to days
+    // daylight savings time is EVIL and forced me to round
+    return ($result > 0) ? $result : 0;
+} // end daysTillDate
+
 ?>

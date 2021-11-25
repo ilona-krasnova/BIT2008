@@ -5,7 +5,7 @@
     foreach ($users as $user) {
        echo $user['Username'] . "<br>";
      }
-    include('exchanges.html');
+    include('exchangelist.html');
 ?>
 
 <?php
