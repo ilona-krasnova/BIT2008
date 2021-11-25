@@ -27,6 +27,10 @@ include('lib.php');
     <script>
       $().ready(() => {
         $('.ui.dropdown').dropdown();
+        $('.ui.accordion').accordion();
+        $('select.dropdown').dropdown();
+        $('.ui.rating').rating();
+        $('.menu .item').tab();
       })
     </script>
   </head>
@@ -41,26 +45,26 @@ include('lib.php');
           <div class="menu" tabindex="-1">
             <div class="item" id="userinfo">
               <h3>Blossom12</h3>
-              <a href="user.html">View account</a>
+              <a href="user.php">View account</a>
             </div>
-            <a class="item" href="catalogue.html"><i class="leaf icon"></i>Explore</a>
-            <a class="item" href="newseed.html"><i class="plus icon"></i>Add listing</a>
-            <a class="item" href="exchanges.html"><i class="exchange icon"></i>Exchanges</a>
-              <a class="item" href="catalogue.html?favourite=1"><i class="heart icon"></i>Favourites</a>
+            <a class="item" href="catalogue.php"><i class="leaf icon"></i>Explore</a>
+            <a class="item" href="newseed.php"><i class="plus icon"></i>Add listing</a>
+            <a class="item" href="exchanges.php"><i class="exchange icon"></i>Exchanges</a>
+              <a class="item" href="catalogue.php?favourite=1"><i class="heart icon"></i>Favourites</a>
             <div class="divider"></div>
-            <a class="item" href="help.html"><i class="life ring icon"></i>Help</a>
+            <a class="item" href="help.php"><i class="life ring icon"></i>Help</a>
             <div class="divider"></div>
             <a class="item" href="">Sign Out</a>
           </div>
         </div>
 
         <!-- logo -->
-        <a class="header item" href="index.html">SEED + SHARE</a>
+        <a class="header item" href="index.php">SEED + SHARE</a>
         <img src="img/logo.png" height="45" />
 
         <div class="right menu">
           <!-- user welcome -->
-          <a class="item" href="user.html">Hello, Blossom12!</a>
+          <a class="item" href="user.php">Hello, Blossom12!</a>
           <!-- search bar -->
           <div class="item">
             <div class="ui action left icon input">
