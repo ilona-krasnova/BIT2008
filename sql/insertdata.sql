@@ -24,6 +24,32 @@ VALUES (
     'blooms1234'
 ) ;
 
+INSERT INTO `BC_UserAddress`(
+    `UserID`, 
+    `Address`, 
+    `PostalCode`
+) 
+VALUES (
+    '1',
+    '28 Finchley Rd' ,
+    'K2G 5E5'
+) ,
+(
+    '2' ,
+    'Gardenglenn Way'	, 
+    'K1V 9E2'
+) ,
+(
+    '3' ,
+    'Catsworth Cres'	, 
+    'K1V 9W4'
+) ,
+(
+    '4' ,
+    'Cinnamon St'	, 
+    'K6V 7R2'
+) ;
+
 INSERT INTO `BC_LifeCycle`( 
     `LifeCycle`, 
     `Description`

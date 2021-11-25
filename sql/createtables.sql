@@ -6,6 +6,14 @@ CREATE TABLE `BC_User` (
     PRIMARY KEY (`ID`)
 ) ENGINE = InnoDB;
 
+CREATE TABLE `BC_UserAddress` ( 
+    `ID` BIGINT NOT NULL AUTO_INCREMENT , 
+    `UserID` BIGINT NOT NULL , 
+    `Address` VARCHAR(256) NOT NULL ,
+    `PostalCode` VARCHAR(7) NOT NULL ,
+    PRIMARY KEY (`ID`)
+) ENGINE = InnoDB;
+
 -- Seed Lookups
 
 CREATE TABLE `BC_LifeCycle` ( 
