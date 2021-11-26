@@ -8,9 +8,9 @@
     include('newseed.html');
 
     //Missing ID, UserID, PlantTypeID, LifeCycleID, SunID, MaintenanceID
-    $createNewSeed = "INSERT INTO BC_Seed (ID, UserID, SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID) VALUES ('3', '3', 'Sunflower Seeds', 'Yellow petals, brown centre. Grows very big.', '5', '3', '1', '1', '1')";
-    $resQuery = mysqli_query($dblink, $createNewSeed);
-    echo "hello world";
+    //$createNewSeed = "INSERT INTO BC_Seed (ID, UserID, SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID) VALUES ('3', '3', 'Sunflower Seeds', 'Yellow petals, brown centre. Grows very big.', '5', '3', '1', '1', '1')";
+    //$resQuery = mysqli_query($dblink, $createNewSeed);
+    //echo "hello world";
 
 ?>
 
