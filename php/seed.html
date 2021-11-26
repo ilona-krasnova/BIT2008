@@ -1,7 +1,7 @@
     <article style="position: relative;">
-        <h1 class="ui header">French Marigold</h1>
+        <!--Input seed name from database -->
+        <h1 class="ui header"><?php echo $rowData['SeedName'] ?></h1>
         <hr />
-
         <div class="ui centered grid">
             <div class="four wide column">
                 <!-- card -->
@@ -11,17 +11,17 @@
                         <img class="ui avatar image" src="img/profilepicture.jpg"> <a href="user.html">Blossom12</a>
                     </div>
                     <div class="image">
-                        <img src="img/marigold.jpg" alt="French Marigold">
+                        <img src="img/seed/1.jpg" alt="Rainbow Carrots">
                     </div>
+                    <!--Printing off seed info from database-->
                     <div class="content">
-                        <p>Weight 10g</p>
-                        <p>Type: Flowers</p>
-                        <p>Life Cycle: Annual</p>
-                        <p>Sun Requirements: Full sun</p>
-                        <p>Maintenance: Low</p>
-                        <p>Hardiness Zone: 2, 3, 4, 5, 6, 7, 8, 9</p>
-                            Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas massa in libero dictum, in imperdiet enim condimentum. Curabitur posuere luctus lorem ut venenatis. Phasellus tortor leo, imperdiet quis dictum suscipit, consequat ut nunc. Donec cursus ipsum nec nibh gravida malesuada. Donec condimentum sagittis dignissim. Nunc sed ante neque.
-                        </p>
+                        <p>Quantity: <?php echo $rowData['Quantity'] ?> </p>
+                        <p>Type: <?php echo $rowData['PlantType'] ?> </p>
+                        <p>Life Cycle: <?php echo $rowData['LifeCycle'] ?> </p>
+                        <p>Sun Requirements: <?php echo $rowData['Sun'] ?> </p>
+                        <p>Maintenance: <?php echo $rowData['Maintenance'] ?> </p>
+                        <p>Hardiness Zone: <?php echo $rowData['Description'] ?> </p>
+                        <p>Description: seed info here </p>
                     </div>
                     <!-- buttons -->
                     <button class="large ui positive button">
@@ -40,12 +40,12 @@
                         <img src="img/gardengirl95.jpg" style="height: auto;">
                       </a>
                       <div class="content">
-                        <a class="author" href="user.php">GardenGal95</a>
+                        <a class="author" href="user.php"><?php echo $row['Username'] ?></a>
                         <div class="metadata">
-                          <div class="date">2 days ago</div>
+                          <div class="date"><?php echo $row['Timestamp'] ?></div>
                         </div>
                         <div class="text">
-                          I love the colour!
+                          <?php echo $row['Comment'] ?>
                         </div>
                       </div>
                     </div>
@@ -54,12 +54,12 @@
                         <img src="img/profilepicture.jpg" style="height: auto;">
                       </a>
                       <div class="content">
-                        <a class="author" href="user.php">PondScum9</a>
+                        <a class="author" href="user.php"><?php echo $row['Username'] ?></a>
                         <div class="metadata">
-                          <div class="date">1 day ago</div>
+                          <div class="date"><?php echo $row['Timestamp'] ?></div>
                         </div>
                         <div class="text">
-                          These grew great in my sunny front yard! Thanks!
+                            <?php echo $row['Comment'] ?>
                         </div>
                       </div>
                     </div>
