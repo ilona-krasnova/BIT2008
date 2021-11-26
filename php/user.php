@@ -16,15 +16,15 @@
 
     if (!$resQuery)
     {
-        echo "<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" . mysqli_error($dblink) . "</p>";
+        echo "<p>" . mysqli_error($dblink) . "</p>";
     }
 
 
     echo "<table border = '1'>";
-    echo "<tr><td>ID</td><td>SeedName</td><td>Description</td><td>Quantity</td><td>PlantTypeID</td><td>LifeCycleID</td><td>SunID</td><td>MaintenanceID</td></tr>";
+    echo "<tr><td>ID</td><td>UserID</td><td>SeedName</td><td>Description</td><td>Quantity</td><td>PlantTypeID</td><td>LifeCycleID</td><td>SunID</td><td>MaintenanceID</td></tr>";
     while($rowData = mysqli_fetch_assoc($resQuery))
     {
-      echo "<tr><td>{$rowData['SeedName']}</td><td>{$rowData['Description']}</td><td>{$rowData['Quantity']}</td><td>{$rowData['PlantTypeID']}</td><td>{$rowData['LifeCycleID']}</td><td>{$rowData['SunID']}</td><td>{$rowData['MaintenanceID']}</td></tr>";
+      echo "<tr><td>{$rowData['ID']}</td><td>{$rowData['UserID']}</td><td>{$rowData['SeedName']}</td><td>{$rowData['Description']}</td><td>{$rowData['Quantity']}</td><td>{$rowData['PlantTypeID']}</td><td>{$rowData['LifeCycleID']}</td><td>{$rowData['SunID']}</td><td>{$rowData['MaintenanceID']}</td></tr>";
     }
     echo "</table>";
 
