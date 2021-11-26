@@ -7,7 +7,7 @@
      }
     include('user.html');
 
-    //Query the seeds for the user,
+    //Query the seeds for the user
     $seedSelect = "SELECT * FROM BC_Seed";
 
 
@@ -28,15 +28,6 @@
     }
     echo "</table>";
 
-
-
-
-
-
-    //$seedsData = exeSelect($dblink, $seedSelect);
-    //echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    //var_dump($seedsData);
-    //echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
 
 ?>
 
