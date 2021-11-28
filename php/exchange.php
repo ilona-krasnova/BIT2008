@@ -27,7 +27,7 @@
       echo "<p>" . mysqli_error($dblink) . "</p>";
     }
 
-
+    //Testing that the previous code ran
     echo "success!";
 
 
