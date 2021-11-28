@@ -20,8 +20,15 @@
                         <p>Life Cycle: <?php echo $rowData['LifeCycle'] ?> </p>
                         <p>Sun Requirements: <?php echo $rowData['Sun'] ?> </p>
                         <p>Maintenance: <?php echo $rowData['Maintenance'] ?> </p>
-                        <p>Hardiness Zone: <?php echo $rowData['Description'] ?> </p>
-                        <p>Description: seed info here </p>
+                        <p> Hardiness Zone: </p>
+                        <!--Printing off $seedZone description-->
+                        <?php
+                          $seedZone = exeSelect($dblink, "SELECT BC_Zone.ID, BC_Zone.Description FROM BC_Zone WHERE ID BETWEEN 3 AND 11");
+                          foreach ($seedZone as $row) {
+                           echo implode(" | ", $row) . "<br>";
+                          }
+                        ?>
+                        <p>Description: <?php echo $rowz['Description'] ?> </p>
                     </div>
                     <!-- buttons -->
                     <button class="large ui positive button">
@@ -40,29 +47,30 @@
                         <img src="img/gardengirl95.jpg" style="height: auto;">
                       </a>
                       <div class="content">
-                        <a class="author" href="user.php"><?php echo $row['Username'] ?></a>
+                        <a class="author" href="user.php"><?php echo $rowsData['Username'] ?></a>
                         <div class="metadata">
-                          <div class="date"><?php echo $row['Timestamp'] ?></div>
+                          <div class="date"><?php echo $rowsData['Timestamp'] ?></div>
                         </div>
                         <div class="text">
-                          <?php echo $row['Comment'] ?>
+                          <?php echo $rowsData['Comment'] ?>
                         </div>
                       </div>
                     </div>
+                    <!-- Will add additional comments in part four
                     <div class="comment">
                       <a class="avatar">
                         <img src="img/profilepicture.jpg" style="height: auto;">
                       </a>
                       <div class="content">
-                        <a class="author" href="user.php"><?php echo $row['Username'] ?></a>
+                        <a class="author" href="user.php"><?php echo $rowsData['Username'] ?></a>
                         <div class="metadata">
-                          <div class="date"><?php echo $row['Timestamp'] ?></div>
+                          <div class="date"><?php echo $rowsData['Timestamp'] ?></div>
                         </div>
                         <div class="text">
-                            <?php echo $row['Comment'] ?>
+                            <?php echo $rowsData['Comment'] ?>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- reply box -->
                     <form class="ui reply form">
                       <div class="field">
