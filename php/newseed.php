@@ -14,9 +14,9 @@
     $createNewSeed = "INSERT INTO BC_Seed (ID, UserID, SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID) VALUES ('4', '4', 'Pumpkin Seeds', 'Medium to large orange squash.', '4', '2', '1', '1', '2')";
     $resQuery = mysqli_query($dblink, $createNewSeed);
 
-    //$createNewSeed = "INSERT INTO BC_Seed (ID, UserID, SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID) VALUES ('5', '5', 'Peonies', 'Large bush with large pink flowers.', '1', '3', '2', '1', '2')";
-    //$resQuery = mysqli_query($dblink, $createNewSeed);
+  
 
+    //Testing that the previous code ran
     echo "Hello world";
 
 
