@@ -6,32 +6,40 @@
             <div class="content">
                 <form class="ui form" action="catalogue.php" method="GET">
                     <br/>
+                    <!-- TODO: Implement search bar like in A3 -->
                     <div class="ui left icon input">
                         <i class="search icon"></i>
                         <input type="text" placeholder="Search by name">
                     </div>
-                    <select name="seedType" class="ui dropdown">
-                        <option value="">Seed Type</option>
-                        <option value="0">Herb</option>
-                        <option value="1">Vegetable</option>
-                        <option value="2">Flower</option>
-                        <option value="3">Cannabis</option>
+                    <select name="plantType" class="ui dropdown">
+                        <option value="0">any plant type</option>
+<?php
+    foreach ($plantTypeList as $row) {
+        $selected =  ($row['ID'] == $plantType) ? ' selected' : '';
+        echo '<option value="' . $row['ID'] . '"' . $selected . '>' . $row['PlantType'] . '</option>';
+    }
+?>
                     </select>
                     <select name="lifeCycle" class="ui dropdown">
-                        <option value="">Life Cycle</option>
-                        <option value="0">Annual</option>
-                        <option value="1">Biennial</option>
-                        <option value="2">Perennial</option>
+                        <option value="0">any life cycle</option>
+<?php
+    foreach ($lifeCycleList as $row) {
+        $selected =  ($row['ID'] == $lifeCycle) ? ' selected' : '';
+        echo '<option value="' . $row['ID'] . '"' . $selected . '>' . $row['LifeCycle'] . '</option>';
+    }
+?>
                     </select>
-                    <select name="sunRequirements" class="ui dropdown">
-                        <option value="">Sun Requirements</option>
-                        <option value="0">Full sun</option>
-                        <option value="1">Part sun</option>
-                        <option value="2">Part shade</option>
-                        <option value="3">Shade</option>
+                    <select name="sun" class="ui dropdown">
+                        <option value="0">any sun requirements</option>
+<?php
+    foreach ($sunList as $row) {
+        $selected =  ($row['ID'] == $sun) ? ' selected' : '';
+        echo '<option value="' . $row['ID'] . '"' . $selected . '>' . $row['Sun'] . '</option>';
+    }
+?>
                     </select>
                     <select name="maintenance" class="ui dropdown">
-                        <option value="">Maintenance</option>
+                        <option value="0">any maintenance</option>
 <?php
     foreach ($maintenanceList as $row) {
         $selected =  ($row['ID'] == $maintenance) ? ' selected' : '';
@@ -39,7 +47,8 @@
     }
 ?>
                     </select>
-                    <select name ="hardinessZone" class="ui dropdown">
+                    <!-- TODO: implement
+                        <select name ="hardinessZone" class="ui dropdown">
                         <option value="">Hardiness Zone</option>
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -51,18 +60,18 @@
                         <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9">9</option>
-                      </select>
+                      </select> -->
                     <button class="ui button" type="submit">
                         Submit
                     </button>
-                    <div class="ui left labeled button" tabindex="0">
+                    <!-- <div class="ui left labeled button" tabindex="0">
                         <div class="ui button">
                           <i class="heart icon"></i> Favourites
                         </div>
                         <a class="ui basic label">
                           4
                         </a>
-                      </div>
+                      </div> -->
                 </form>
             </div>
             <hr/>
@@ -90,6 +99,10 @@
                     </div>
                 </a>
 <?php
+    }
+    if (count($listings) == 0)
+    {
+        echo '<p>No results found. <a href="catalogue.php">Click here to reset</a></p>';
     }
 ?>
             </div>

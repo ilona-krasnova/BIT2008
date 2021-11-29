@@ -1,10 +1,11 @@
 <?php
+// Ilona Krasnova
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 include_once "../../secure/db_open.php";
 include('lib.php');
 
-$username = exeSelect($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` = " . getCurrUserID())[0]["Username"];
+$username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` = " . getCurrUserID())["Username"];
 ?>
 
 <html lang="en">
@@ -52,7 +53,7 @@ $username = exeSelect($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` = " 
             <a class="item" href="catalogue.php"><i class="leaf icon"></i>Explore</a>
             <a class="item" href="newseed.php"><i class="plus icon"></i>Add listing</a>
             <a class="item" href="exchangelist.php"><i class="exchange icon"></i>Exchanges</a>
-              <a class="item" href="catalogue.php?favourite=1"><i class="heart icon"></i>Favourites</a>
+              <!-- <a class="item" href="catalogue.php?favourite=1"><i class="heart icon"></i>Favourites</a> -->
             <div class="divider"></div>
             <a class="item" href="help.php"><i class="life ring icon"></i>Help</a>
             <div class="divider"></div>

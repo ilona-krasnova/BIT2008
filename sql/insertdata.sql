@@ -113,7 +113,7 @@ VALUES (
     'Plants require between 3 and 6 hours of sun per day, but need protection from intense mid-day sun'
 ) , 
 (
-    'Full Shade' , 
+    'Full shade' , 
     'Plants require less than 3 hours of direct sun per day'
 );
 
@@ -178,6 +178,26 @@ VALUES (
     1,
     1,
     1
+),
+(
+    2 ,
+    'Snapdragon' , 
+    'Pollinator friendly',
+    5,
+    3,
+    2,
+    2,
+    2
+),
+(
+    3 ,
+    'Dill' , 
+    'Great for pickling!',
+    12,
+    1,
+    1,
+    1,
+    1
 );
 
 INSERT INTO `BC_SeedZone`(
@@ -186,25 +206,28 @@ INSERT INTO `BC_SeedZone`(
 )
 VALUES 
 (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9),
-(2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (2, 9);
+(2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (2, 9),
+(3, 7), (3, 8), (3, 9),
+(4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9);
 
 INSERT INTO `BC_SeedComment`(
     `SeedID`, 
     `UserID`, 
     `Comment`
 ) 
-VALUES (
-    1,
-    3,
-    'Beautiful colours!'
-), 
-(1, 4, "Yum!!");
+VALUES 
+(1, 3, 'Beautiful colours!'), 
+(1, 4, "Yum!!"),
+(3, 1, "Are these edible?"),
+(3, 2, "Aren't they poisonous?"),
+(3, 3, "They're not poisonous, but they taste awful. Ask me how I know."),
+(4, 2, "Looks DILL-icious!");
 
 INSERT INTO `BC_Listing`(
     `SeedID`
 )
 VALUES 
-    (1), (2);
+    (1), (2), (3), (4);
 
 INSERT INTO `BC_Request`(
     `ListingID`, 
