@@ -76,3 +76,7 @@ a.ui.card {
 div.ui.four.stackable.cards{
     margin-bottom: 2%;
 }
+
+.avatar img {
+    height:auto !important;
+}
