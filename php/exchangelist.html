@@ -29,12 +29,38 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/featured4.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                          <!--Printing off username info -->
+                          <?php
+                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 1;");
+                          foreach ($info as $row) {
+                                echo $row['Username'];
+                          }
+                          ?>
+                        </span>
 
-                  
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                      <!--Printing off seed name info -->
+                      <?php
+                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 1");
+                      foreach ($seednameinfo as $row) {
+                            echo $row['SeedName'];
+                      }
+                      ?>
+                      seeds
+                    </td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                   </tr>
                   <tr>
                     <td class="center aligned">
@@ -46,10 +72,37 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/perennial.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                          <!--Printing off username info -->
+                          <?php
+                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 2;");
+                          foreach ($info as $row) {
+                                echo $row['Username'];
+                          }
+                          ?>
+                        </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                      <!--Printing off seed name info -->
+                      <?php
+                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 2");
+                      foreach ($seednameinfo as $row) {
+                            echo $row['SeedName'];
+                      }
+                      ?>
+                      seeds
+                    </td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 2;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                   </tr>
                   <tr>
                     <td class="center aligned">
@@ -61,10 +114,37 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/cannabis.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                          <!--Printing off username info -->
+                          <?php
+                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 3;");
+                          foreach ($info as $row) {
+                                echo $row['Username'];
+                          }
+                          ?>
+                        </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                      <!--Printing off seed name info -->
+                      <?php
+                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 3");
+                      foreach ($seednameinfo as $row) {
+                            echo $row['SeedName'];
+                      }
+                      ?>
+                      seeds
+                    </td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 3;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -90,11 +170,27 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/gardengirl95.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                        <!--Printing off username info -->
+                        <?php
+                        $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 1;");
+                        foreach ($info as $row) {
+                              echo $row['Username'];
+                        }
+                        ?>
+                       </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td><?php echo $rowData['SeedName'] ?> seeds</td>
+                    <td><?php echo $rowData['SeedName'] ?> seeds</td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                     <td><?php echo $rowData['ID'] ?></td>
                   </tr>
                 </tbody>
@@ -122,10 +218,37 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/herbs.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                          <!--Printing off username info -->
+                          <?php
+                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 1;");
+                          foreach ($info as $row) {
+                                echo $row['Username'];
+                          }
+                          ?>
+                        </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                      <!--Printing off seed name info -->
+                      <?php
+                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 1");
+                      foreach ($seednameinfo as $row) {
+                            echo $row['SeedName'];
+                      }
+                      ?>
+                      seeds
+                     </td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                   </tr>
                   <tr>
                     <td class="center aligned">
@@ -137,10 +260,37 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/orange flower.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                          <!--Printing off username info -->
+                          <?php
+                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 2;");
+                          foreach ($info as $row) {
+                                echo $row['Username'];
+                          }
+                          ?>
+                        </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                      <!--Printing off seed name info -->
+                      <?php
+                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 2");
+                      foreach ($seednameinfo as $row) {
+                            echo $row['SeedName'];
+                      }
+                      ?>
+                      seeds
+                    </td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 2;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                   </tr>
                   <tr>
                     <td class="center aligned">
@@ -152,10 +302,37 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/featured3.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                          <!--Printing off username info -->
+                          <?php
+                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 3;");
+                          foreach ($info as $row) {
+                                echo $row['Username'];
+                          }
+                          ?>
+                        </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                      <!--Printing off seed name info -->
+                      <?php
+                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 3");
+                      foreach ($seednameinfo as $row) {
+                            echo $row['SeedName'];
+                      }
+                      ?>
+                      seeds
+                    </td>
+                    <td>
+                      <!--Printing off requested info -->
+                      <?php
+                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 3;");
+                      foreach ($requestDateInfo as $row) {
+                      echo $row['Requested'];
+                      }
+                      ?>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -181,11 +358,49 @@
                     </td>
                     <td>
                         <img class="ui avatar image" src="img/pepper.jpg">
-                        <span><?php echo $row['Username']?></span>
+                        <span>
+                        <!--Printing off username info -->
+                        <?php
+                        $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 3;");
+                        foreach ($info as $row) {
+                              echo $row['Username'];
+                        }
+                        ?>
+                      </span>
                     </td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $row['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['Requested'] ?></td>
+                    <td>
+                    <!--Printing off seed name info -->
+                    <?php
+                    $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                    FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                    ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 1");
+                    foreach ($seednameinfo as $row) {
+                    echo $row['SeedName'];
+                    }
+                    ?>
+                    seeds
+                    </td>
+                    <td>
+                    <!--Printing off seed name info -->
+                    <?php
+                    $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
+                    FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
+                    ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 2");
+                    foreach ($seednameinfo as $row) {
+                    echo $row['SeedName'];
+                    }
+                    ?>
+                    seeds
+                    </td>
+                    <td>
+                    <!--Printing off requested info -->
+                    <?php
+                    $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
+                    foreach ($requestDateInfo as $row) {
+                    echo $row['Requested'];
+                    }
+                    ?>
+                    </td>
                     <td><?php echo $rowData['ID'] ?></td>
                   </tr>
                 </tbody>
