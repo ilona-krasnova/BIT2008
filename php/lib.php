@@ -16,7 +16,21 @@ function exeSelect($dblink, $sql)
         array_push($res, $rowData);
     }
     return $res;
+} // end exeSelect
+
+// returns first row of the query
+function exeSelectOne($dblink, $sql)
+{
+    $res = exeSelect($dblink, $sql);
+
+    if (count($res) != 1)
+    {
+        echo "exeSelect1 must return only one row";
+        return;
+    }
+    return $res[0];
 }
+
 
 // returns number of days until given date
 function daysFromDate($dateStr)
@@ -27,5 +41,17 @@ function daysFromDate($dateStr)
     // daylight savings time is EVIL and forced me to round
     return ($result > 0) ? $result : 0;
 } // end daysTillDate
+
+// for shorter code
+function getRequestParam($parameter)
+{
+    return isset($_REQUEST[$parameter]) ? $_REQUEST[$parameter] : NULL;
+} // end getRequestParam
+
+// TODO: returns ID of user that is logged in
+function getCurrUserID()
+{
+    return 1;
+}
 
 ?>

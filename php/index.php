@@ -1,4 +1,5 @@
 <?php
+    // Ilona Krasnova
     include('header.php');
 
     $users = exeSelect($dblink, "SELECT ID, Username, Email, PasswordHash FROM BC_User");
