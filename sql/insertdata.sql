@@ -197,7 +197,8 @@ VALUES (
     1,
     3,
     'Beautiful colours!'
-);
+), 
+(1, 4, "Yum!!");
 
 INSERT INTO `BC_Listing`(
     `SeedID`

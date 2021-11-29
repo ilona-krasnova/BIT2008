@@ -3,6 +3,8 @@ ini_set('display_errors', '1');
 error_reporting(E_ALL);
 include_once "../../secure/db_open.php";
 include('lib.php');
+
+$username = exeSelect($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` = " . getCurrUserID())[0]["Username"];
 ?>
 
 <html lang="en">
@@ -64,7 +66,7 @@ include('lib.php');
 
         <div class="right menu">
           <!-- user welcome -->
-          <a class="item" href="user.php">Hello, Blossom12!</a>
+          <a class="item" href="user.php">Hello, <?=$username?>!</a>
           <!-- search bar -->
           <div class="item">
             <div class="ui action left icon input">

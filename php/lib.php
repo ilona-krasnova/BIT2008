@@ -16,7 +16,7 @@ function exeSelect($dblink, $sql)
         array_push($res, $rowData);
     }
     return $res;
-}
+} // end exeSelect
 
 // returns number of days until given date
 function daysFromDate($dateStr)
@@ -27,5 +27,17 @@ function daysFromDate($dateStr)
     // daylight savings time is EVIL and forced me to round
     return ($result > 0) ? $result : 0;
 } // end daysTillDate
+
+// for shorter code
+function getRequestParam($parameter)
+{
+    return isset($_REQUEST[$parameter]) ? $_REQUEST[$parameter] : NULL;
+} // end getRequestParam
+
+// TODO: returns ID of user that is logged in
+function getCurrUserID()
+{
+    return 1;
+}
 
 ?>
