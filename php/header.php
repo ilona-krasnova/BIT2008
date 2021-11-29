@@ -5,7 +5,14 @@ error_reporting(E_ALL);
 include_once "../../secure/db_open.php";
 include('lib.php');
 
-$username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` = " . getCurrUserID())["Username"];
+$currUser = $_COOKIE["CURR_USER"];
+if (!$currUser) 
+{
+  header("Location: login.php");
+  exit();
+}
+
+$username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` = " . $currUser)["Username"];
 ?>
 
 <html lang="en">
@@ -57,7 +64,7 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
             <div class="divider"></div>
             <a class="item" href="help.php"><i class="life ring icon"></i>Help</a>
             <div class="divider"></div>
-            <a class="item" href="">Sign Out</a>
+            <a class="item" href="logout.php">Sign Out</a>
           </div>
         </div>
 
