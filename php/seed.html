@@ -7,11 +7,11 @@
                 <!-- card -->
                 <div class="ui centered card">
                     <div class="content">
-                        <div class="right floated meta">0d</div>
-                        <img class="ui avatar image" src="img/profilepicture.jpg"> <a href="user.html">Blossom12</a>
+                        <div class="right floated meta">0d</div> <!-- todo: use daysTillDate() from lib.php to update timestamp-->
+                        <img class="ui avatar image" src="img/profilepicture.jpg"> <a href="user.html">Blossom12</a> <!-- TODO: edit user image and name-->
                     </div>
                     <div class="image">
-                        <img src="img/seed/1.jpg" alt="Rainbow Carrots">
+                        <img src="img/seed/<?=$rowData['SeedID']?>.jpg" alt="Rainbow Carrots"> <!-- IK; TODO: edit alt text-->
                     </div>
                     <!--Printing off seed info from database-->
                     <div class="content">
@@ -23,7 +23,9 @@
                         <p> Hardiness Zone: </p>
                         <!--Printing off $seedZone description-->
                         <?php
-                          $seedZone = exeSelect($dblink, "SELECT BC_Zone.ID, BC_Zone.Description FROM BC_Zone WHERE ID BETWEEN 3 AND 11");
+                          // $seedZone = exeSelect($dblink, "SELECT BC_Zone.ID, BC_Zone.Description FROM BC_Zone WHERE ID BETWEEN 3 AND 11");
+                          $seedZone = exeSelect($dblink, "SELECT BC_Zone.ID, BC_Zone.Description FROM BC_Zone 
+                            INNER JOIN BC_SeedZone ON BC_SeedZone.ZoneID = BC_Zone.ID WHERE BC_SeedZone.SeedID = ". $rowData['SeedID']); // IK                          
                           foreach ($seedZone as $row) {
                            echo implode(" | ", $row) . "<br>";
                           }
@@ -42,8 +44,12 @@
             <div class="six wide column">
                 <h3 id="newSeedDidactic">Comments</h3>
                 <div class="ui comments">
+<?php
+  foreach ($rowsDataArray as $rowsData) {
+?>
                     <div class="comment">
                       <a class="avatar">
+                        <!-- TODO: update the image to reflect the user ID (see img/user/<id>)-->
                         <img src="img/gardengirl95.jpg" style="height: auto;">
                       </a>
                       <div class="content">
@@ -56,6 +62,9 @@
                         </div>
                       </div>
                     </div>
+<?php
+  }
+?>
                     <!-- Will add additional comments in part four
                     <div class="comment">
                       <a class="avatar">
@@ -79,6 +88,7 @@
                       <div id="messageButton" class="ui primary submit labeled icon button">
                         <i class="icon edit"></i> Write Comment
                       </div>
+                      <!-- todo: enable comment insertion into database-->
                     </form>
                     <p id="report"><a href="">Report Issue</a></p>
                   </div>

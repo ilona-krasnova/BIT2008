@@ -1,8 +1,7 @@
 <?php
     include('header.php');
 
-    $maintenance = isset($_REQUEST['maintenance']) ? $_REQUEST['maintenance'] : NULL;
-
+    $maintenance = getRequestParam('maintenance');
 
     $maintenanceList = exeSelect($dblink, "SELECT ID, Maintenance FROM BC_Maintenance");
 
