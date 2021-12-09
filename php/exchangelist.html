@@ -8,205 +8,174 @@
             <a class="item" data-tab="sent">Sent</a>
             <a class="item" data-tab="completed">Completed</a>
         </div>
+
+        <!--Received table-->
+
         <div class="ui bottom attached active tab segment" data-tab="received">
             <table class="ui compact celled table">
-                <thead>
-                  <tr>
-                    <th class="three wide">Action</th>
-                    <th>Name</th>
-                    <th>They Requested</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="center aligned">
-                        <div class="ui buttons">
-                            <button class="ui button">Reject</button>
-                            <div class="or"></div>
-                            <button class="ui positive button" onclick="window.location.href='user.php?id=1';">View Profile</button>
-                          </div>
-                    </td>
-                    <td>
-                        <img class="ui avatar image" src="img/featured4.jpg">
-                        <span>
-                          <!--Printing off username info -->
-                          <?php
-                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 1;");
-                          foreach ($info as $row) {
-                                echo $row['Username'];
-                          }
-                          ?>
-                        </span>
 
-                    </td>
-                    <td>
-                      <!--Printing off seed name info -->
-                      <?php
-                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 1");
-                      foreach ($seednameinfo as $row) {
-                            echo $row['SeedName'];
-                      }
-                      ?>
-                      seeds
-                    </td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
-                      }
-                      ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="center aligned">
-                        <div class="ui buttons">
-                            <button class="ui button">Reject</button>
-                            <div class="or"></div>
-                            <button class="ui positive button" onclick="window.location.href='user.php?id=1';">View Profile</button>
-                          </div>
-                    </td>
-                    <td>
-                        <img class="ui avatar image" src="img/perennial.jpg">
-                        <span>
-                          <!--Printing off username info -->
-                          <?php
-                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 2;");
-                          foreach ($info as $row) {
-                                echo $row['Username'];
-                          }
-                          ?>
-                        </span>
-                    </td>
-                    <td>
-                      <!--Printing off seed name info -->
-                      <?php
-                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 2");
-                      foreach ($seednameinfo as $row) {
-                            echo $row['SeedName'];
-                      }
-                      ?>
-                      seeds
-                    </td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 2;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
-                      }
-                      ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="center aligned">
-                        <div class="ui buttons">
-                            <button class="ui button">Reject</button>
-                            <div class="or"></div>
-                            <button class="ui positive button" onclick="window.location.href='user.php?id=1';">View Profile</button>
-                          </div>
-                    </td>
-                    <td>
-                        <img class="ui avatar image" src="img/cannabis.jpg">
-                        <span>
-                          <!--Printing off username info -->
-                          <?php
-                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 3;");
-                          foreach ($info as $row) {
-                                echo $row['Username'];
-                          }
-                          ?>
-                        </span>
-                    </td>
-                    <td>
-                      <!--Printing off seed name info -->
-                      <?php
-                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 3");
-                      foreach ($seednameinfo as $row) {
-                            echo $row['SeedName'];
-                      }
-                      ?>
-                      seeds
-                    </td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 3;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
-                      }
-                      ?>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <?php
+                  if (mysqli_num_rows($receivedResult) > 0) {
+              ?>
+              <!--Printing table head-->
+              <thead>
+                <tr>
+                  <th class="three wide">Action</th>
+                  <th>Name</th>
+                  <th>They Requested</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+
+              <!--Start of loop to print off relevant data from database-->
+              <?php
+              $i=0;
+              while($row = mysqli_fetch_array($receivedResult)) {
+              ?>
+
+              <!--Printing off table info-->
+              <tbody>
+                <tr>
+                  <td class="center aligned">
+                      <div class="ui buttons">
+                          <button class="ui button">Reject</button>
+                          <div class="or"></div>
+                          <button class="ui positive button" onclick="window.location.href='user.php?id=1';">View Profile</button>
+                      </div>
+                  </td>
+                  <td>
+                      <img class="ui avatar image" src="img/featured4.jpg">
+                      <span>
+                        <!--Printing off username-->
+                        <?php echo $row["Username"]; ?>
+                      </span>
+                  </td>
+                  <td>
+                    <!--Printing off seed name-->
+                    <?php echo $row["SeedName"]; ?> seeds
+                  </td>
+                  <td>
+                    <!--Printing off requested date -->
+                    <?php echo $row["Requested"]; ?>
+                  </td>
+                </tr>
+              </tbody>
+
+              <?php
+                  $i++;
+                  }
+              ?>
+
+          </table>
+          <!--Error message-->
+          <?php
+              }
+              else{
+              echo "No result found";
+              }
+          ?>
+
         </div>
+
+        <!--Active table -->
+
         <div class="ui bottom attached tab segment" data-tab="active">
             <table class="ui compact celled table">
-                <thead>
+              <?php
+              if (mysqli_num_rows($activeResult) > 0) {
+              ?>
+              <!--Printing table head -->
+              <thead>
                   <tr>
-                    <th class="one wide">Action</th>
-                    <th>Name</th>
-                    <th>Sending</th>
-                    <th>Receiving</th>
-                    <th>Date</th>
-                    <th>Exchange ID</th>
+                      <th class="one wide">Action</th>
+                      <th>Name</th>
+                      <th>Sending</th>
+                      <th>Receiving</th>
+                      <th>Date</th>
+                      <th>Exchange ID</th>
                   </tr>
-                </thead>
+              </thead>
+
+              <!--Start of loop to print off relevant data from database-->
+              <?php
+              $i=0;
+              while($row = mysqli_fetch_array($activeResult)) {
+              ?>
+
                 <tbody>
-                  <tr>
-                    <td class="center aligned">
-                        <button class="ui button" onclick="window.location.href='exchange.php?id=1';">
-                            View
-                        </button>
-                    </td>
-                    <td>
-                        <img class="ui avatar image" src="img/gardengirl95.jpg">
-                        <span>
-                        <!--Printing off username info -->
-                        <?php
-                        $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 1;");
-                        foreach ($info as $row) {
-                              echo $row['Username'];
-                        }
-                        ?>
-                       </span>
-                    </td>
-                    <td><?php echo $rowData['SeedName'] ?> seeds</td>
-                    <td><?php echo $rowData['SeedName'] ?> seeds</td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
+                      <tr>
+                          <td class="center aligned">
+                            <button class="ui button" onclick="window.location.href='exchange.php?id=1';">
+                              View
+                                </button>
+                                </td>
+                                <td>
+                                <img class="ui avatar image" src="img/gardengirl95.jpg">
+                                    <span>
+                                    <!--Printing username-->
+                                    <?php echo $row["Username"]; ?>
+                                    </span>
+                                </td>
+                                <td>
+                                  <!--Printing seed name -->
+                                  <?php echo $row["SeedName"]; ?>
+                                </td>
+                                <td>
+                                  <!--Printing seed name -->
+                                  <?php echo $row["SeedName"]; ?>
+                                </td>
+                                <td>
+                                  <!--Printing requested date -->
+                                  <?php echo $row["Requested"]; ?>
+                                </td>
+                                <td>
+                                  <!--Printing requested ID -->
+                                  <?php echo $row["ID"]; ?>
+                            </td>
+                        </tr>
+                  </tbody>
+
+                  <?php
+                      $i++;
                       }
-                      ?>
-                    </td>
-                    <td><?php echo $rowData['ID'] ?></td>
-                  </tr>
-                </tbody>
-            </table>
+                  ?>
+
+                  </table>
+                  <!--Error Message-->
+                  <?php
+                  }
+                  else{
+                  echo "No result found";
+                  }
+                  ?>
+
+        <!--Sent table-->
+
         </div>
         <div class="ui bottom attached tab segment" data-tab="sent">
           <h3 id="bio">&nbsp; Please note: You can only make as many requests as you have listings!</h3>
             <table class="ui compact celled table">
-                <thead>
-                  <tr>
-                    <th class="three wide">Action</th>
-                    <th>Name</th>
-                    <th>You Requesed</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
+              <?php
+                  if (mysqli_num_rows($sentResult) > 0) {
+              ?>
+
+              <!--Printing table head -->
+              <thead>
+                <tr>
+                  <th class="three wide">Action</th>
+                  <th>Name</th>
+                  <th>You Requesed</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+
+              <!--Start of loop to print off relevant data from database-->
+              <?php
+              $i=0;
+              while($row = mysqli_fetch_array($sentResult)) {
+              ?>
+
+              <!--Printing table info-->
                 <tbody>
                   <tr>
                     <td class="center aligned">
@@ -219,192 +188,111 @@
                     <td>
                         <img class="ui avatar image" src="img/herbs.jpg">
                         <span>
-                          <!--Printing off username info -->
-                          <?php
-                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 1;");
-                          foreach ($info as $row) {
-                                echo $row['Username'];
-                          }
-                          ?>
+                          <!--Printing username-->
+                          <?php echo $row["Username"]; ?>
                         </span>
                     </td>
                     <td>
-                      <!--Printing off seed name info -->
-                      <?php
-                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 1");
-                      foreach ($seednameinfo as $row) {
-                            echo $row['SeedName'];
-                      }
-                      ?>
-                      seeds
-                     </td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
-                      }
-                      ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="center aligned">
-                      <div class="ui buttons">
-                          <button class="ui button">Cancel</button>
-                          <div class="or"></div>
-                          <button class="ui positive button" onclick="window.location.href='seed.php?id=1';">View Listing</button>
-                        </div>
+                      <!--Printing seed name -->
+                      <?php echo $row["SeedName"]; ?> seeds
                     </td>
                     <td>
-                        <img class="ui avatar image" src="img/orange flower.jpg">
-                        <span>
-                          <!--Printing off username info -->
-                          <?php
-                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 2;");
-                          foreach ($info as $row) {
-                                echo $row['Username'];
-                          }
-                          ?>
-                        </span>
-                    </td>
-                    <td>
-                      <!--Printing off seed name info -->
-                      <?php
-                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 2");
-                      foreach ($seednameinfo as $row) {
-                            echo $row['SeedName'];
-                      }
-                      ?>
-                      seeds
-                    </td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 2;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
-                      }
-                      ?>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="center aligned">
-                      <div class="ui buttons">
-                          <button class="ui button">Cancel</button>
-                          <div class="or"></div>
-                          <button class="ui positive button" onclick="window.location.href='seed.php?id=1';">View Listing</button>
-                        </div>
-                    </td>
-                    <td>
-                        <img class="ui avatar image" src="img/featured3.jpg">
-                        <span>
-                          <!--Printing off username info -->
-                          <?php
-                          $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 3;");
-                          foreach ($info as $row) {
-                                echo $row['Username'];
-                          }
-                          ?>
-                        </span>
-                    </td>
-                    <td>
-                      <!--Printing off seed name info -->
-                      <?php
-                      $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                      FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                      ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 3");
-                      foreach ($seednameinfo as $row) {
-                            echo $row['SeedName'];
-                      }
-                      ?>
-                      seeds
-                    </td>
-                    <td>
-                      <!--Printing off requested info -->
-                      <?php
-                      $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 3;");
-                      foreach ($requestDateInfo as $row) {
-                      echo $row['Requested'];
-                      }
-                      ?>
+                      <!--Printing requested date -->
+                      <?php echo $row["Requested"]; ?>
+
                     </td>
                   </tr>
                 </tbody>
+
+              <?php
+                  $i++;
+                  }
+              ?>
+
               </table>
+              <!--Error Message-->
+              <?php
+              }
+              else{
+              echo "No result found";
+              }
+              ?>
+
+        <!--Completed table-->
+
         </div>
         <div class="ui bottom attached tab segment" data-tab="completed">
             <table class="ui compact celled table">
-                <thead>
+              <?php
+                  if (mysqli_num_rows($completedResult) > 0) {
+              ?>
+
+              <!--Printing table head-->
+              <thead>
+                <tr>
+                  <th class="one wide">Action</th>
+                  <th>Name</th>
+                  <th>Sent</th>
+                  <th>Received</th>
+                  <th>Date</th>
+                  <th>Exchange ID</th>
+                </tr>
+              </thead>
+
+              <!--Start of loop to print off relevant data from database-->
+              <?php
+              $i=0;
+              while($row = mysqli_fetch_array($completedResult)) {
+              ?>
+
+              <!--Printing table info-->
+              <tbody>
                   <tr>
-                    <th class="one wide">Action</th>
-                    <th>Name</th>
-                    <th>Sent</th>
-                    <th>Received</th>
-                    <th>Date</th>
-                    <th>Exchange ID</th>
+                        <td class="center aligned">
+                            <button class="ui button" onclick="window.location.href='exchange.php?id=1';"> View </button>
+                        </td>
+                        <td>
+                            <img class="ui avatar image" src="img/pepper.jpg">
+                            <span>
+                              <!--Printing off username info -->
+                              <?php echo $row["Username"]; ?>
+                            </span>
+                        </td>
+                        <td>
+                          <!--Printing off seed name info -->
+                          <?php echo $row["SeedName"]; ?>
+                          seeds
+                        </td>
+                        <td>
+                          <!--Printing off seed name info -->
+                          <?php echo $row["SeedName"]; ?>
+                          seeds
+                        </td>
+                        <td>
+                          <!--Printing off requested info -->
+                          <?php echo $row["Requested"]; ?>
+                        </td>
+                        <td>
+                          <!--Printing off requested ID -->
+                          <?php echo $row["ID"]; ?>
+                        </td>
                   </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="center aligned">
-                        <button class="ui button" onclick="window.location.href='exchange.php?id=1';">
-                            View
-                        </button>
-                    </td>
-                    <td>
-                        <img class="ui avatar image" src="img/pepper.jpg">
-                        <span>
-                        <!--Printing off username info -->
-                        <?php
-                        $info = exeSelect($dblink, "SELECT BC_User.Username, BC_Request.ID FROM BC_User INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID WHERE BC_Request.ID = 3;");
-                        foreach ($info as $row) {
-                              echo $row['Username'];
-                        }
-                        ?>
-                      </span>
-                    </td>
-                    <td>
-                    <!--Printing off seed name info -->
-                    <?php
-                    $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                    FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                    ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 1");
-                    foreach ($seednameinfo as $row) {
-                    echo $row['SeedName'];
-                    }
-                    ?>
-                    seeds
-                    </td>
-                    <td>
-                    <!--Printing off seed name info -->
-                    <?php
-                    $seednameinfo = exeSelect($dblink, "SELECT BC_Seed.SeedName, BC_Listing.Posted, BC_Request.ID
-                    FROM BC_Seed INNER JOIN (BC_Listing INNER JOIN BC_Request ON BC_Listing.ID = BC_Request.ListingID)
-                    ON BC_Seed.ID = BC_Listing.SeedID WHERE BC_Request.ID = 2");
-                    foreach ($seednameinfo as $row) {
-                    echo $row['SeedName'];
-                    }
-                    ?>
-                    seeds
-                    </td>
-                    <td>
-                    <!--Printing off requested info -->
-                    <?php
-                    $requestDateInfo = exeSelect($dblink, "SELECT BC_Request.ID, BC_Request.Requested FROM BC_Request WHERE BC_Request.ID = 1;");
-                    foreach ($requestDateInfo as $row) {
-                    echo $row['Requested'];
-                    }
-                    ?>
-                    </td>
-                    <td><?php echo $rowData['ID'] ?></td>
-                  </tr>
-                </tbody>
-            </table>
+              </tbody>
+
+              <?php
+                  $i++;
+                  }
+              ?>
+
+              </table>
+              <!--Error Message-->
+              <?php
+              }
+              else{
+                echo "No result found";
+              }
+              ?>
+
         </div>
 
     </article>
