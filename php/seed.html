@@ -1,4 +1,5 @@
     <article style="position: relative;">
+
         <!--Input seed name from database -->
         <h1 class="ui header"><?php echo $rowData['SeedName'] ?></h1>
         <hr />
@@ -7,30 +8,28 @@
                 <!-- card -->
                 <div class="ui centered card">
                     <div class="content">
-                        <div class="right floated meta">0d</div> <!-- todo: use daysTillDate() from lib.php to update timestamp-->
-                        <img class="ui avatar image" src="img/profilepicture.jpg"> <a href="user.php?id=1">Blossom12</a> <!-- TODO: edit user image and name-->
+                        <div class="right floated meta"> </div> <!-- todo: use daysTillDate() from lib.php to update timestamp-->
+                        <img class="ui avatar image" src="img/profilepicture.jpg"> <a href="user.php?id=1"> <?php echo $row['Username'] ?> </a> <!-- Printing off username from database-->
                     </div>
                     <div class="image">
                         <img src="img/seed/<?=$rowData['SeedID']?>.jpg" alt="Rainbow Carrots"> <!-- IK; TODO: edit alt text-->
                     </div>
-                    <!--Printing off seed info from database-->
+                       <!--Printing off seed info from database-->
                     <div class="content">
                         <p>Quantity: <?php echo $rowData['Quantity'] ?> </p>
                         <p>Type: <?php echo $rowData['PlantType'] ?> </p>
                         <p>Life Cycle: <?php echo $rowData['LifeCycle'] ?> </p>
                         <p>Sun Requirements: <?php echo $rowData['Sun'] ?> </p>
                         <p>Maintenance: <?php echo $rowData['Maintenance'] ?> </p>
-                        <p> Hardiness Zone: </p>
-                        <!--Printing off $seedZone description-->
+                        <p> Hardiness Zones: </p>
+                        <!--Printing off $seedZone info-->
                         <?php
-                          // $seedZone = exeSelect($dblink, "SELECT BC_Zone.ID, BC_Zone.Description FROM BC_Zone WHERE ID BETWEEN 3 AND 11");
-                          $seedZone = exeSelect($dblink, "SELECT BC_Zone.ID, BC_Zone.Description FROM BC_Zone 
-                            INNER JOIN BC_SeedZone ON BC_SeedZone.ZoneID = BC_Zone.ID WHERE BC_SeedZone.SeedID = ". $rowData['SeedID']); // IK                          
                           foreach ($seedZone as $row) {
                            echo implode(" | ", $row) . "<br>";
                           }
                         ?>
-                        <p>Description: <?php echo $rowz['Description'] ?> </p>
+                        <!--Printing off seed description-->
+                        <p>Description: <?php echo $rows['Description'] ?> </p>
                     </div>
                     <!-- buttons -->
                     <button class="large ui positive button">
@@ -41,59 +40,57 @@
                     </button>
                 </div>
             </div>
-            <div class="six wide column">
-                <h3 id="newSeedDidactic">Comments</h3>
-                <div class="ui comments">
-<?php
-  foreach ($rowsDataArray as $rowsData) {
-?>
-                    <div class="comment">
-                      <a class="avatar">
-                        <!-- TODO: update the image to reflect the user ID (see img/user/<id>)-->
-                        <img src="img/gardengirl95.jpg" style="height: auto;">
-                      </a>
-                      <div class="content">
-                        <a class="author" href="user.php"><?php echo $rowsData['Username'] ?></a>
-                        <div class="metadata">
-                          <div class="date"><?php echo $rowsData['Timestamp'] ?></div>
-                        </div>
-                        <div class="text">
-                          <?php echo $rowsData['Comment'] ?>
-                        </div>
-                      </div>
-                    </div>
-<?php
-  }
-?>
-                    <!-- Will add additional comments in part four
-                    <div class="comment">
-                      <a class="avatar">
-                        <img src="img/profilepicture.jpg" style="height: auto;">
-                      </a>
-                      <div class="content">
-                        <a class="author" href="user.php"><?php echo $rowsData['Username'] ?></a>
-                        <div class="metadata">
-                          <div class="date"><?php echo $rowsData['Timestamp'] ?></div>
-                        </div>
-                        <div class="text">
-                            <?php echo $rowsData['Comment'] ?>
-                        </div>
-                      </div>
-                    </div> -->
-                    <!-- reply box -->
-                    <form class="ui reply form">
-                      <div class="field">
-                        <textarea></textarea>
-                      </div>
-                      <div id="messageButton" class="ui primary submit labeled icon button">
-                        <i class="icon edit"></i> Write Comment
-                      </div>
-                      <!-- todo: enable comment insertion into database-->
-                    </form>
-                    <p id="report"><a href="">Report Issue</a></p>
+
+            <!--Comment section -->
+                <div class="six wide column">
+                      <h3 id="newSeedDidactic">Comments</h3>
+                      <div class="ui comments">
+                          <div class="comment">
+                              <!-- TODO: update the image to reflect the user ID (see img/user/<id>)
+                                <a class="avatar"> <img src="img/gardengirl95.jpg" style="height: auto;"> </a>
+                                <a class="avatar"> <img src="img/profilepicture.jpg" style="height: auto;"></a>
+                                -->
+                            <div class="content">
+                              <a class="author" href="user.php">
+                              </a>
+                              <div class="metadata">
+                                <div class="date"></div>
+                              </div>
+                              <div class="text">
+                              </div>
+                            </div>
+                          </div>
+                          <!--Printing off comments-->
+
+                          <div style='width:500px;'>
+
+                        <!--Loop through and print database comments option 2-
+                              <?php
+                                    $cquery = mysqli_query($dblink, $comment);
+                                    $numRows = mysqli_num_rows($cquery);
+                                    if($numRows > 0) {
+                                      $i=0;
+                                      while ($rowsData = mysqli_fetch_assoc($cquery)) {
+                                      echo "<b> {$rowsData['Username']} </b>";
+                                      echo $rowsData['CommentTimestamp'], "</br>";
+                                      echo $rowsData['Comment'], "</br>";
+
+                                      $i++;
+                                      }
+                                    }
+                                    else{
+                                    echo "No result found";
+                                    }
+                                ?>-->
+
+                            </div>
+                            <div id="Comment"> </div>
+                            <br/>
+                          <!--Input comments-->
+                            <input type="text" id="comItem" value =""/>
+                            <br/>
+                            <br/>
+                            <p><input type="submit" class="ui primary submit labeled icon button" value="Write Comment" onClick="uploadComments()"</p>
                   </div>
-            </div>
-        </div>
+              </div>
     </article>
-  </body>
-</html>
