@@ -9,7 +9,7 @@
                 <div class="ui centered card">
                     <div class="content">
                         <div class="right floated meta"> </div> <!-- todo: use daysTillDate() from lib.php to update timestamp-->
-                        <img class="ui avatar image" src="img/profilepicture.jpg"> <a href="user.php?id=1"> <?php echo $row['Username'] ?> </a> <!-- Printing off username from database-->
+                        <img class="ui avatar image" src="img/user/<?=$rows['UserID']?>"> <a href="user.php?id=<?=$rows['UserID']?>"> <?php echo $rows['Username'] ?> </a> <!-- Printing off username from database IK-->
                     </div>
                     <div class="image">
                         <img src="img/seed/<?=$rowData['SeedID']?>.jpg" alt="Rainbow Carrots"> <!-- IK; TODO: edit alt text-->
@@ -51,7 +51,7 @@
                                 <a class="avatar"> <img src="img/profilepicture.jpg" style="height: auto;"></a>
                                 -->
                             <div class="content">
-                              <a class="author" href="user.php">
+                              <a class="author" href="user.php?id=<?=1?>">
                               </a>
                               <div class="metadata">
                                 <div class="date"></div>
@@ -87,10 +87,18 @@
                             <div id="Comment"> </div>
                             <br/>
                           <!--Input comments-->
-                            <input type="text" id="comItem" value =""/>
+                            <!-- <input type="text" id="comItem" value =""/> IK -->
+                            <form class="ui reply form">
+                                <div class="field">
+                                  <textarea id="comItem"></textarea>
+                                </div>
+                                <div class="ui blue labeled submit icon button" onClick="uploadComments();" >
+                                  <i class="icon edit"></i> Write Comment
+                                </div>
+                            </form>
                             <br/>
                             <br/>
-                            <p><input type="submit" class="ui primary submit labeled icon button" value="Write Comment" onClick="uploadComments()"</p>
+                            <!-- <p><input type="submit" class="ui primary submit labeled icon button" value="Write Comment" onClick="uploadComments()"</p> IK -->
                   </div>
               </div>
     </article>

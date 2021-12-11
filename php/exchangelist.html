@@ -180,9 +180,11 @@
                   <tr>
                     <td class="center aligned">
                       <div class="ui buttons">
-                          <button class="ui button">Cancel</button>
+                          <button class="ui button" onclick="alert('Feature coming soon')">Cancel</button>
                           <div class="or"></div>
-                          <button class="ui positive button" onclick="window.location.href='seed.php?id=1';">View Listing</button>
+                          <a href="seed.php?id=<?=$row['SeedID']?>">
+                            <button class="ui positive button">View Listing</button>
+                          </a>
                         </div>
                     </td>
                     <td>

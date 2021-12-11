@@ -198,6 +198,16 @@ VALUES (
     1,
     1,
     1
+),
+(
+    4 ,
+    'Pumpkin' , 
+    'This is a common, medium varrugated pumpkin. Very rich orange colour.',
+    1,
+    2,
+    1,
+    1,
+    2
 );
 
 INSERT INTO `BC_SeedZone`(
@@ -208,7 +218,8 @@ VALUES
 (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9),
 (2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (2, 9),
 (3, 7), (3, 8), (3, 9),
-(4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9);
+(4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (4, 8), (4, 9),
+(5, 3), (5,4), (5,5), (5,6), (5,7), (5,8), (5,9) ;
 
 INSERT INTO `BC_SeedComment`(
     `SeedID`, 
@@ -227,13 +238,13 @@ INSERT INTO `BC_Listing`(
     `SeedID`
 )
 VALUES 
-    (1), (2), (3), (4);
+    (1), (2), (3), (4), (5);
 
 INSERT INTO `BC_Request`(
     `ListingID`, 
     `UserID`
 )
-VALUES (1, 2);
+VALUES (1, 2), (3, 1), (1, 4);
 
 INSERT INTO `BC_Exchange`(
     `RequestID`, 

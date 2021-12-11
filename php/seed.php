@@ -48,9 +48,12 @@
       //seed description query
       $description = "SELECT
         BC_Seed.Description,
-        BC_Seed.SeedName
+        BC_Seed.SeedName,
+        BC_Seed.UserID,
+        BC_User.Username
           FROM BC_Seed
             INNER JOIN BC_Listing ON BC_Listing.SeedID = BC_Seed.ID
+            INNER JOIN BC_User ON BC_User.ID = BC_Seed.UserID
           WHERE BC_Listing.ID = " . $listingId;
       $dquery = mysqli_query($dblink, $description);
       $numRows = mysqli_num_rows($dquery);

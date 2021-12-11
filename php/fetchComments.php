@@ -10,6 +10,7 @@
 	//Creating comment query to pull needed info for comments based on seedID
 	$comment = "SELECT
 		BC_User.Username,
+		BC_SeedComment.UserID,
 		BC_SeedComment.Timestamp,
 		BC_SeedComment.Comment,
 		BC_SeedComment.SeedID
@@ -40,7 +41,7 @@
 					<div class="comment">
                       <a class="avatar">
                         <!-- TODO: update the image to reflect the user ID (see img/user/<id>)-->
-                        <img src="img/gardengirl95.jpg" style="height: auto;">
+                        <img src="img/user/<?=$rows['UserID']?>.jpg" style="height: auto;">
                       </a>
                       <div class="content">
                         <a class="author" href="user.php"><?php echo $rows['Username'] ?></a>

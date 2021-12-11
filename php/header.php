@@ -21,7 +21,7 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
     <meta http-equiv="content-type" content="text/html">
 
       <!-- TODO:change title based on page name -->
-    <title>Seed + Share | Home</title>
+    <title>Seed + Share</title>
     <meta name="description" content="Exchange you seeds with other local gardeners!" />
     <meta name="keywords" content="seed, exchange, Carleton, BIT2008" />
     <meta name="author" content="Book Club 2: The SQL">
@@ -34,6 +34,9 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
 
     <link rel="stylesheet" type="text/css" href="lib/semantic-ui-2.4.0.min.css" />
     <link rel="stylesheet" type="text/css" href="css/override.css" />
+    <!-- backup, just in case... -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" /> 
+
 
     <script>
       $().ready(() => {
@@ -64,6 +67,8 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
               <!-- <a class="item" href="catalogue.php?favourite=1"><i class="heart icon"></i>Favourites</a> -->
             <div class="divider"></div>
             <a class="item" href="help.php"><i class="life ring icon"></i>Help</a>
+            <a class="item" href="https://github.com/ilona-krasnova/BIT2008"><i class="github icon"></i></i>GitHub</a>
+            
             <div class="divider"></div>
             <a class="item" href="logout.php">Sign Out</a>
           </div>
