@@ -1,11 +1,12 @@
 <script>
     fetchComments();
-    setInterval("fetchComments()", 5000);
+    // setInterval("fetchComments()", 5000);
+    setInterval(fetchComments, 5000); // IK
 
     //Function to grab comments from database and display
     function fetchComments() {
       var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("get", "fetchComments.php", true);
+      xmlHttp.open("get", "fetchComments.php?seedId=<?=$seedId?>", true);
 
       xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState == 4)
@@ -14,7 +15,8 @@
             displayComments(xmlHttp.responseText);
           }
           else {
-              alert("An error occurred!");
+              // alert("An error occurred!");
+              displayComments("An error occurred!"); //IK
           }
         }
       };

@@ -10,7 +10,7 @@
 	$cCom = (isset($_REQUEST['uCom'])) ? $_REQUEST['uCom'] : "N/A";
 
 	//Query to insert comment info into database table
-	$commentQuery = "INSERT INTO $commentTbl (CommentTimestamp, Comment) VALUES (NOW(), '$cCom')";
+	$commentQuery = "INSERT INTO $commentTbl (Timestamp, Comment) VALUES (NOW(), '$cCom')";
 	$resultInsert = mysqli_query($dblink, $commentQuery);
 
 	//Check to ensure correct values are going into database

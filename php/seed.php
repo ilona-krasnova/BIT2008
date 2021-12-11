@@ -1,7 +1,7 @@
 <?php
 
     include('header.php');
-    include_once('comment.php');
+    // include_once('comment.php');
 
     $listingId = getRequestParam('id');
 
@@ -42,6 +42,9 @@
             }
         }
 
+      $seedId = $rowData['SeedID']; // set variable for comment.php to use -- IK
+      include_once('comment.php'); // IK
+
       //seed description query
       $description = "SELECT
         BC_Seed.Description,
@@ -69,7 +72,7 @@
     /*comment info query option 2
     $comment = "SELECT
       BC_User.Username,
-      BC_SeedComment.CommentTimestamp,
+      BC_SeedComment.Timestamp,
       BC_SeedComment.Comment,
       BC_SeedComment.SeedID
         FROM BC_User

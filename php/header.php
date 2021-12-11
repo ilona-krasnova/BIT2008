@@ -20,9 +20,10 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
     <meta charset="utf-8" />
     <meta http-equiv="content-type" content="text/html">
 
+      <!-- TODO:change title based on page name -->
     <title>Seed + Share | Home</title>
     <meta name="description" content="Exchange you seeds with other local gardeners!" />
-    <meta name="keywords" content="seed, exchange, Carleton, BIT@008" />
+    <meta name="keywords" content="seed, exchange, Carleton, BIT2008" />
     <meta name="author" content="Book Club 2: The SQL">
 
     <link rel="shortcut icon" href="favicon.ico" />
