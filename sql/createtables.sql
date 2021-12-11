@@ -112,6 +112,8 @@ CREATE TABLE `BC_Request` (
     FOREIGN KEY (`UserID`) REFERENCES BC_User(ID)
 ) ENGINE = InnoDB;
 
+ALTER TABLE `BC_Request` ADD `Rejected` BOOLEAN NOT NULL DEFAULT FALSE AFTER `Requested`;
+
 -- Exchange
 
 CREATE TABLE `BC_Exchange` ( 
