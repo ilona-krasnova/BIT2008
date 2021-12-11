@@ -31,7 +31,9 @@
 
     //function to upload comment info to database
     function uploadComments() {
-      var comData = "uCom=" + document.getElementById("comItem").value;
+      console.log("upload comments");
+      var comData = "uCom=" + document.getElementById("comItem").value
+      + "&seedId=<?=$seedId?>&userId=<?=$currUser?>"; // IK
       document.getElementById("comItem").value = '';
 
       var xmlHttp = new XMLHttpRequest();

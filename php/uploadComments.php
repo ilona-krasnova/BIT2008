@@ -4,13 +4,17 @@
 
 	<?php
 	include_once "../../secure/db_open.php";
+	include "lib.php"; // IK
 
 	//Selecting comments table from database
 	$commentTbl = "BC_SeedComment";
 	$cCom = (isset($_REQUEST['uCom'])) ? $_REQUEST['uCom'] : "N/A";
+	$seedId = getRequestParam('seedId'); // IK
+	$userId = getRequestParam('userId');// IK
 
 	//Query to insert comment info into database table
-	$commentQuery = "INSERT INTO $commentTbl (Timestamp, Comment) VALUES (NOW(), '$cCom')";
+	// $commentQuery = "INSERT INTO $commentTbl (Timestamp, Comment) VALUES (NOW(), '$cCom')";
+	$commentQuery = "INSERT INTO $commentTbl (SeedID, UserID, Comment) VALUES ($seedId, $userId, '$cCom')"; //IK
 	$resultInsert = mysqli_query($dblink, $commentQuery);
 
 	//Check to ensure correct values are going into database
