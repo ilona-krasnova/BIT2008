@@ -57,12 +57,6 @@
     }
 
 
-    //DELETE THE FOLLOWING LATER
-    echo $requestedSeed;
-    echo "<br><br>";
-    echo $receiverSeed;
-    echo "<br><br>";
-
 
     //Declare UserID's to swap
     $requesterUserID;
