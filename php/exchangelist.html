@@ -4,7 +4,7 @@
         <hr />
         <div class="ui tabular menu">
             <div class="item active" data-tab="received">Received</div>
-            <a class="item" data-tab="active">Active</a>
+            <a class="item" data-tab="active_">Active</a>
             <a class="item" data-tab="sent">Sent</a>
             <a class="item" data-tab="completed">Completed</a>
         </div>
@@ -12,12 +12,11 @@
         <!--Received table-->
 
         <div class="ui bottom attached active tab segment" data-tab="received">
-            <table class="ui compact celled table">
-
-              <?php
-                  if (mysqli_num_rows($receivedResult) > 0) {
-              ?>
-              <!--Printing table head-->
+<?php
+    if (mysqli_num_rows($receivedResult) > 0) {
+?>
+              <table class="ui compact celled table">
+                <!--Printing table head-->
               <thead>
                 <tr>
                   <th class="three wide">Action</th>
@@ -28,10 +27,10 @@
               </thead>
 
               <!--Start of loop to print off relevant data from database-->
-              <?php
-              $i=0;
-              while($row = mysqli_fetch_array($receivedResult)) {
-              ?>
+<?php
+        $i=0;
+        while($row = mysqli_fetch_array($receivedResult)) {
+?>
 
               <!--Printing off table info-->
               <tbody>
@@ -44,7 +43,7 @@
                       </div>
                   </td>
                   <td>
-                      <img class="ui avatar image" src="img/featured4.jpg">
+                      <img class="ui avatar image" src="img/user/1.jpg" /> <!-- IK -->
                       <span>
                         <!--Printing off username-->
                         <?php echo $row["Username"]; ?>
@@ -61,30 +60,30 @@
                 </tr>
               </tbody>
 
-              <?php
-                  $i++;
-                  }
-              ?>
-
+<?php
+            $i++;
+        }
+?>
           </table>
           <!--Error message-->
-          <?php
-              }
-              else{
-              echo "No result found";
-              }
-          ?>
+<?php
+    }
+    else{
+        echo "No incoming requests.";
+    }
+?>
 
         </div>
+        
 
         <!--Active table -->
 
-        <div class="ui bottom attached tab segment" data-tab="active">
-            <table class="ui compact celled table">
+        <div class="ui bottom attached tab segment" data-tab="active_">
               <?php
-              if (mysqli_num_rows($activeResult) > 0) {
+              if (mysqli_num_rows($activeResult1) + mysqli_num_rows($activeResult2) > 0) {
               ?>
-              <!--Printing table head -->
+              <table class="ui compact celled table">
+                <!--Printing table head -->
               <thead>
                   <tr>
                       <th class="one wide">Action</th>
@@ -99,7 +98,7 @@
               <!--Start of loop to print off relevant data from database-->
               <?php
               $i=0;
-              while($row = mysqli_fetch_array($activeResult)) {
+              while($row = mysqli_fetch_array($activeResult1)) {
               ?>
 
                 <tbody>
@@ -113,20 +112,20 @@
                                 <img class="ui avatar image" src="img/gardengirl95.jpg">
                                     <span>
                                     <!--Printing username-->
-                                    <?php echo $row["Username"]; ?>
+                                    <?php echo $row["bUsername"]; ?>
                                     </span>
                                 </td>
                                 <td>
                                   <!--Printing seed name -->
-                                  <?php echo $row["SeedName"]; ?>
+                                  <?php echo $row["sSeedName"]; ?>
                                 </td>
                                 <td>
                                   <!--Printing seed name -->
-                                  <?php echo $row["SeedName"]; ?>
+                                  <?php echo $row["rSeedName"]; ?>
                                 </td>
                                 <td>
                                   <!--Printing requested date -->
-                                  <?php echo $row["Requested"]; ?>
+                                  <?php echo $row["Accepted"]; ?>
                                 </td>
                                 <td>
                                   <!--Printing requested ID -->
@@ -136,28 +135,63 @@
                   </tbody>
 
                   <?php
-                      $i++;
-                      }
+                } // end while 1
+                  while($row = mysqli_fetch_array($activeResult1)) {
                   ?>
+                    <tbody>
+                          <tr>
+                              <td class="center aligned">
+                                <button class="ui button" onclick="window.location.href='exchange.php?id=1';">
+                                  View
+                                    </button>
+                                    </td>
+                                    <td>
+                                    <img class="ui avatar image" src="img/gardengirl95.jpg">
+                                        <span>
+                                        <!--Printing username-->
+                                        <?php echo $row["bUsername"]; ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                      <!--Printing seed name -->
+                                      <?php echo $row["sSeedName"]; ?>
+                                    </td>
+                                    <td>
+                                      <!--Printing seed name -->
+                                      <?php echo $row["rSeedName"]; ?>
+                                    </td>
+                                    <td>
+                                      <!--Printing requested date -->
+                                      <?php echo $row["Accepted"]; ?>
+                                    </td>
+                                    <td>
+                                      <!--Printing requested ID -->
+                                      <?php echo $row["ID"]; ?>
+                                </td>
+                            </tr>
+                      </tbody>
+                  <?php
+                      } // end while 2
+                  ?>
+
 
                   </table>
                   <!--Error Message-->
                   <?php
                   }
                   else{
-                  echo "No result found";
+                  echo "No active exchanges.";
                   }
                   ?>
-
+                </div>
+   
         <!--Sent table-->
-
-        </div>
         <div class="ui bottom attached tab segment" data-tab="sent">
           <h3 id="bio">&nbsp; Please note: You can only make as many requests as you have listings!</h3>
-            <table class="ui compact celled table">
               <?php
                   if (mysqli_num_rows($sentResult) > 0) {
               ?>
+              <table class="ui compact celled table">
 
               <!--Printing table head -->
               <thead>
@@ -216,7 +250,7 @@
               <?php
               }
               else{
-              echo "No result found";
+              echo "No outgoing requests.";
               }
               ?>
 
@@ -224,10 +258,10 @@
 
         </div>
         <div class="ui bottom attached tab segment" data-tab="completed">
-            <table class="ui compact celled table">
               <?php
                   if (mysqli_num_rows($completedResult) > 0) {
               ?>
+              <table class="ui compact celled table">
 
               <!--Printing table head-->
               <thead>
@@ -291,7 +325,7 @@
               <?php
               }
               else{
-                echo "No result found";
+                echo "No completed exchanges.";
               }
               ?>
 

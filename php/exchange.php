@@ -20,9 +20,21 @@
         WHERE BC_Listing.ID = ".$exchange['ListingID']." OR BC_Listing.ID = ".$exchange['ListingIDtoBarter']
     );
 
-    foreach ($listings as $listing) {
-       echo implode($listing, " | ") . "<br>";
+    if ($currUser == $listings[0]['UserID'])
+    {
+        $sending = $listings[0];
+        $receiving = $listings[1];
     }
+    else
+    {
+        $sending = $listings[1];
+        $receiving = $listings[0];
+    }
+
+    echo "sending " . implode($sending, " | ") . "<br>";
+    echo "receiving " . implode($receiving, " | ") . "<br>";
+
+
     include('exchange.html');
 
 
