@@ -36,7 +36,7 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
     <link rel="stylesheet" type="text/css" href="css/override.css" />
     <!-- backup, just in case... -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" /> 
-
+  
 
     <script>
       $().ready(() => {
