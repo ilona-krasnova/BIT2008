@@ -8,11 +8,23 @@
     include('user.html');
 
     //Query the seeds for the user
-    $seedSelect = "SELECT * FROM BC_Seed";
+
+    //ORIGINAL
+    //$seedSelect = "SELECT * FROM BC_Seed";
+
+    $seedSelectSQL = "SELECT SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID FROM BC_Seed WHERE UserID ="  .  $currUser;
+    $seedSelectResult = mysqli_query($dblink, $seedSelectSQL);
+
+
+    foreach ($seedSelectResult as $z) {
+       echo $z['SeedName'] . "  |  " . $z['Description'] . "  |  " . $z['Quantity'] .  "  |  " . $z['PlantTypeID'] .   "  |  "  .   $z['LifeCycleID']   .   "  |  " .   $z['SunID'] . "   |   " .  $z['MaintenanceID']  . "<br>";
+     }
 
 
 
-    $resQuery = mysqli_query($dblink, $seedSelect);
+
+/*
+    $resQuery = mysqli_query($dblink, $seedSelectSQL);
 
     if (!$resQuery)
     {
@@ -21,13 +33,13 @@
 
 
     echo "<table border = '1'>";
-    echo "<tr><td>ID</td><td>UserID</td><td>SeedName</td><td>Description</td><td>Quantity</td><td>PlantTypeID</td><td>LifeCycleID</td><td>SunID</td><td>MaintenanceID</td></tr>";
+    echo "<tr><td>SeedName</td><td>Description</td><td>Quantity</td><td>PlantTypeID</td><td>LifeCycleID</td><td>SunID</td><td>MaintenanceID</td></tr>";
     while($rowData = mysqli_fetch_assoc($resQuery))
     {
-      echo "<tr><td>{$rowData['ID']}</td><td>{$rowData['UserID']}</td><td>{$rowData['SeedName']}</td><td>{$rowData['Description']}</td><td>{$rowData['Quantity']}</td><td>{$rowData['PlantTypeID']}</td><td>{$rowData['LifeCycleID']}</td><td>{$rowData['SunID']}</td><td>{$rowData['MaintenanceID']}</td></tr>";
+      echo "<tr><td>{$rowData['SeedName']}</td><td>{$rowData['Description']}</td><td>{$rowData['Quantity']}</td><td>{$rowData['PlantTypeID']}</td><td>{$rowData['LifeCycleID']}</td><td>{$rowData['SunID']}</td><td>{$rowData['MaintenanceID']}</td></tr>";
     }
     echo "</table>";
-
+*/
 
 ?>
 
