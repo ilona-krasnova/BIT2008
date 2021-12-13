@@ -40,11 +40,11 @@
 ?>	
 					<div class="comment">
                       <a class="avatar">
-                        <!-- TODO: update the image to reflect the user ID (see img/user/<id>)-->
+                        <!-- IK: updated the image to reflect the user ID (see img/user/<id>)-->
                         <img src="img/user/<?=$rows['UserID']?>.jpg" style="height: auto;">
                       </a>
                       <div class="content">
-                        <a class="author" href="user.php"><?php echo $rows['Username'] ?></a>
+                        <a class="author" href="user.php?id=<?=$rows['UserID']?>"><?php echo $rows['Username'] ?></a>
                         <div class="metadata">
                           <div class="date"><?php echo $rows['Timestamp'] ?></div>
                         </div>

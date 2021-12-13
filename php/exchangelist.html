@@ -80,7 +80,7 @@
 
         <div class="ui bottom attached tab segment" data-tab="active_">
               <?php
-              if (mysqli_num_rows($activeResult1) + mysqli_num_rows($activeResult2) > 0) {
+              if (mysqli_num_rows($activeResult1) > 0 || mysqli_num_rows($activeResult2) > 0) {
               ?>
               <table class="ui compact celled table">
                 <!--Printing table head -->
@@ -104,8 +104,8 @@
                 <tbody>
                       <tr>
                           <td class="center aligned">
-                            <button class="ui button" onclick="window.location.href='exchange.php?id=1';">
-                              Accept
+                            <button class="ui button" onclick="window.location.href='exchange.php?id=<?=$row['ID']?>';">
+                              View
                                 </button>
                                 </td>
                                 <td>
@@ -136,7 +136,7 @@
 
                   <?php
                 } // end while 1
-                  while($row = mysqli_fetch_array($activeResult1)) {
+                  while($row = mysqli_fetch_array($activeResult2)) {
                   ?>
                     <tbody>
                           <tr>
@@ -258,9 +258,9 @@
 
         </div>
         <div class="ui bottom attached tab segment" data-tab="completed">
-              <?php
-                  if (mysqli_num_rows($completedResult) > 0) {
-              ?>
+          <?php
+          if (mysqli_num_rows($completedResult1) + mysqli_num_rows($completedResult2) > 0) {
+          ?>    
               <table class="ui compact celled table">
 
               <!--Printing table head-->
@@ -276,50 +276,84 @@
               </thead>
 
               <!--Start of loop to print off relevant data from database-->
+              <!--Start of loop to print off relevant data from database-->
               <?php
               $i=0;
-              while($row = mysqli_fetch_array($completedResult)) {
+              while($row = mysqli_fetch_array($completedResult1)) {
               ?>
 
-              <!--Printing table info-->
-              <tbody>
-                  <tr>
-                        <td class="center aligned">
-                            <button class="ui button" onclick="window.location.href='exchange.php?id=1';"> View </button>
-                        </td>
-                        <td>
-                            <img class="ui avatar image" src="img/pepper.jpg">
-                            <span>
-                              <!--Printing off username info -->
-                              <?php echo $row["Username"]; ?>
-                            </span>
-                        </td>
-                        <td>
-                          <!--Printing off seed name info -->
-                          <?php echo $row["SeedName"]; ?>
-                          seeds
-                        </td>
-                        <td>
-                          <!--Printing off seed name info -->
-                          <?php echo $row["SeedName"]; ?>
-                          seeds
-                        </td>
-                        <td>
-                          <!--Printing off requested info -->
-                          <?php echo $row["Requested"]; ?>
-                        </td>
-                        <td>
-                          <!--Printing off requested ID -->
-                          <?php echo $row["ID"]; ?>
-                        </td>
-                  </tr>
-              </tbody>
+                <tbody>
+                      <tr>
+                          <td class="center aligned">
+                            <button class="ui button" onclick="window.location.href='exchange.php?id=<?=$row["ID"]?>';">
+                              View
+                                </button>
+                                </td>
+                                <td>
+                                <img class="ui avatar image" src="img/gardengirl95.jpg">
+                                    <span>
+                                    <!--Printing username-->
+                                    <?php echo $row["bUsername"]; ?>
+                                    </span>
+                                </td>
+                                <td>
+                                  <!--Printing seed name -->
+                                  <?php echo $row["sSeedName"]; ?>
+                                </td>
+                                <td>
+                                  <!--Printing seed name -->
+                                  <?php echo $row["rSeedName"]; ?>
+                                </td>
+                                <td>
+                                  <!--Printing requested date -->
+                                  <?php echo $row["Accepted"]; ?>
+                                </td>
+                                <td>
+                                  <!--Printing requested ID -->
+                                  <?php echo $row["ID"]; ?>
+                            </td>
+                        </tr>
+                  </tbody>
 
-              <?php
-                  $i++;
-                  }
-              ?>
-
+                  <?php
+                } // end while 1
+                  while($row = mysqli_fetch_array($completedResult2)) {
+                  ?>
+                    <tbody>
+                          <tr>
+                              <td class="center aligned">
+                                <button class="ui button" onclick="window.location.href='exchange.php?id=1';">
+                                  View
+                                    </button>
+                                    </td>
+                                    <td>
+                                    <img class="ui avatar image" src="img/gardengirl95.jpg">
+                                        <span>
+                                        <!--Printing username-->
+                                        <?php echo $row["bUsername"]; ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                      <!--Printing seed name -->
+                                      <?php echo $row["sSeedName"]; ?>
+                                    </td>
+                                    <td>
+                                      <!--Printing seed name -->
+                                      <?php echo $row["rSeedName"]; ?>
+                                    </td>
+                                    <td>
+                                      <!--Printing requested date -->
+                                      <?php echo $row["Accepted"]; ?>
+                                    </td>
+                                    <td>
+                                      <!--Printing requested ID -->
+                                      <?php echo $row["ID"]; ?>
+                                </td>
+                            </tr>
+                      </tbody>
+                  <?php
+                      } // end while 2
+                  ?>
               </table>
               <!--Error Message-->
               <?php

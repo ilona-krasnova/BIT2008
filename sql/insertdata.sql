@@ -1,27 +1,32 @@
 INSERT INTO `BC_User`(
     `Username`, 
     `Email`, 
-    `PasswordHash`
+    `PasswordHash`,
+    `Bio`
 ) 
 VALUES (
     'Gardengal95',
     'gardengal95@hotmail.com' ,
-    'ilovegardening95'
+    'ilovegardening95',
+    'Amateur botanist. Ask me about my succulents'
 ) ,
 (
     'EverGreen34' ,
     'evergreen34@gmail.com'	, 
-    'daisy12!'
+    'daisy12!',
+    'Ferns are love; ferns are life.'
 ) ,
 (
     'GreenThumb1' ,
     'greenthumb1@gmail.com'	, 
-    'begonia34'
+    'begonia34',
+    "Just a man talkin' about plants"
 ) ,
 (
     'Blossom12' ,
     'blossomgirl12@hotmail.com'	, 
-    'blooms1234'
+    'blooms1234',
+    'Crazy plant lady'
 ) ;
 
 INSERT INTO `BC_UserAddress`(
@@ -36,17 +41,17 @@ VALUES (
 ) ,
 (
     '2' ,
-    'Gardenglenn Way'	, 
+    '1 Gardenglenn Way'	, 
     'K1V 9E2'
 ) ,
 (
     '3' ,
-    'Catsworth Cres'	, 
+    '34 Catsworth Cres'	, 
     'K1V 9W4'
 ) ,
 (
     '4' ,
-    'Cinnamon St'	, 
+    '705 Cinnamon St'	, 
     'K6V 7R2'
 ) ;
 

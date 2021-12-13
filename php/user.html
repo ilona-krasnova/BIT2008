@@ -1,87 +1,49 @@
     <article>
         <div class="ui grid">
             <div class="one wide column">
-                <img class="ui small avatar image" src="img/profilepicture.jpg">
+                <img class="ui small avatar image" src="img/user/<?=$user['ID']?>.jpg"> 
             </div>
             <div class="four wide column">
                 <span id="userprofilename" class="ui huge header">
-                    Blossom12
+                    <?=$user['Username']?>
                 </span>
                 <div class="ui huge star rating" data-rating="4" data-max-rating="5"></div>
                 <p id="report"><a href="">Report Issue</a></p>
             </div>
             <div class="ten wide column">
-                <h3 id="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sit amet velit malesuada,
-                    maximus urna non, ultricies libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                    cubilia curae; Aliquam dignissim fringilla lorem id tincidunt. Praesent sodales in velit quis molestie.
-                    Ut aliquet nec dolor tincidunt vehicula.</h3>
+                <h3 id="bio"><?=$user['Bio']?></h3>
             </div>
         </div>
         <hr />
         <div class="ui six stackable cards">
-            <a class="ui card" href="seed.php?id=1">
-                <div class="content">
-                    <div class="right floated meta">0d</div>
-                    <img class="ui avatar image" src="img/profilepicture.jpg"> French Marigold
-                </div>
-                <div class="image">
-                    <img src="img/marigold.jpg" alt="French Marigold">
-                </div>
-                <div class="content">
-                    <span class="right floated">
-                        <i class="heart outline like icon"></i>
-                    </span>
-                    <i class="comment icon"></i>
-                    3 comments
-                </div>
-            </a>
-            <a class="ui card" href="seed.php?id=1">
-                <div class="content">
-                    <div class="right floated meta">0d</div>
-                    <img class="ui avatar image" src="img/profilepicture.jpg"> Aubergine
-                </div>
-                <div class="image">
-                    <img src="img/aubergine.jpg" alt="Aubergine">
-                </div>
-                <div class="content">
-                    <span class="right floated">
-                        <i class="heart outline like icon"></i>
-                    </span>
-                    <i class="comment icon"></i>
-                    3 comments
-                </div>
-            </a>
-            <a class="ui card" href="seed.php?id=1">
-                <div class="content">
-                    <div class="right floated meta">0d</div>
-                    <img class="ui avatar image" src="img/profilepicture.jpg"> Heirloom Carrots
-                </div>
-                <div class="image">
-                    <img src="img/carrots.jpg" alt="Heirloom Carrots">
-                </div>
-                <div class="content">
-                    <span class="right floated">
-                        <i class="heart outline like icon"></i>
-                    </span>
-                    <i class="comment icon"></i>
-                    3 comments
-                </div>
-            </a>
-            <a class="ui card" href="seed.php?id=1">
-                <div class="content">
-                    <div class="right floated meta">0d</div>
-                    <img class="ui avatar image" src="img/profilepicture.jpg"> Lavender
-                </div>
-                <div class="image">
-                    <img src="img/lavender.jpg" alt="Lavender">
-                </div>
-                <div class="content">
-                    <span class="right floated">
-                        <i class="heart outline like icon"></i>
-                    </span>
-                    <i class="comment icon"></i>
-                    3 comments
-                </div>
-            </a>
+<?php
+    foreach ($userListings as $row) {
+        $days = daysFromDate($row['Posted']);
+?>
+                <a class="ui card" href="seed.php?id=<?= $row['ListingID'] ?>">
+                    <div class="content">
+                        <div class="right floated meta"><?= $days ?> d</div>
+                        <img class="ui avatar image" src="img/user/<?= $row['UserID'] ?>.jpg"> 
+                        <?= $row['SeedName'] ?>
+                    </div>
+                    <div class="image">
+                        <img src="img/seed/<?= $row['SeedID'] ?>.jpg" alt="<?= $row['SeedName'] ?>">
+                    </div>
+                    <div class="content">
+                        <span class="right floated">
+                            <i class="heart outline like icon"></i>
+                        </span>
+                        <i class="comment icon"></i>
+                        <?= $row['CommentCount'] ?> comments
+                    </div>
+                </a>
+<?php
+    }
+    if (count($userListings) == 0)
+    {
+        echo '<p>No active listings.</p>';
+    }
+?>
+
         </div>
     </article>

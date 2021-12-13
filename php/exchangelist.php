@@ -40,8 +40,13 @@
            INNER JOIN BC_Listing AS BarterListing ON BarterListing.ID = BC_Exchange.ListingIDtoBarter
            INNER JOIN BC_Seed AS BarterSeed ON BarterSeed.ID = BarterListing.SeedID
            INNER JOIN BC_User AS BarterUser ON BarterUser.ID = BarterSeed.UserID
-           WHERE BC_Seed.UserID = ". $currUser
+           WHERE BC_Seed.UserID = ". $currUser . "
+           AND BC_Exchange.Complete = 0"
            ); // IK
+      if (!$activeResult1)
+      {
+        echo(mysqli_error($dblink));
+      }
 
     $activeResult2 = mysqli_query($dblink,
       "SELECT BC_Exchange.ID, BC_Exchange.Accepted,
@@ -55,9 +60,14 @@
       INNER JOIN BC_Listing AS BarterListing ON BarterListing.ID = BC_Exchange.ListingIDtoBarter
       INNER JOIN BC_Seed AS BarterSeed ON BarterSeed.ID = BarterListing.SeedID
       INNER JOIN BC_User AS BarterUser ON BarterUser.ID = BarterSeed.UserID
-      WHERE BarterSeed.UserID = ". $currUser
+      WHERE BarterSeed.UserID = ". $currUser . "
+      AND BC_Exchange.Complete = 0"
       ); // IK
 
+      if (!$activeResult2)
+      {
+        echo(mysqli_error($dblink));
+      }
 
         // $activeResult = mysqli_query($dblink,"SELECT
         //           BC_User.Username,
@@ -91,15 +101,46 @@
         //             INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID");
 
       //Completed table
-      $completedResult = mysqli_query($dblink,"SELECT
-                        BC_User.Username,
-                        BC_Seed.SeedName,
-                        BC_Request.Requested,
-                        BC_Exchange.ID
-                        FROM((BC_User
-                            INNER JOIN BC_Seed ON BC_User.ID = BC_Seed.UserID)
-                        INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID)
-                    INNER JOIN BC_Exchange ON BC_Request.ID = BC_Exchange.RequestID");
+      $completedResult1 = mysqli_query($dblink,
+      "SELECT BC_Exchange.ID, BC_Exchange.Accepted,
+      BC_Listing.SeedID AS sSeedID, BC_Seed.UserID AS currUserID, BC_User.Username AS currUsername, BC_Seed.SeedName AS sSeedName, 
+      BarterListing.SeedID AS rSeedID, BarterSeed.UserID AS bUserID, BarterUser.Username as bUsername, BarterSeed.SeedName as rSeedName
+            FROM BC_Listing
+            INNER JOIN BC_Seed ON BC_Seed.ID = BC_Listing.SeedID
+            INNER JOIN BC_User ON BC_User.ID = BC_Seed.UserID
+            INNER JOIN BC_Request ON BC_Request.ListingID = BC_Listing.ID
+            INNER JOIN BC_Exchange ON BC_Exchange.RequestID = BC_Request.ID
+            INNER JOIN BC_Listing AS BarterListing ON BarterListing.ID = BC_Exchange.ListingIDtoBarter
+            INNER JOIN BC_Seed AS BarterSeed ON BarterSeed.ID = BarterListing.SeedID
+            INNER JOIN BC_User AS BarterUser ON BarterUser.ID = BarterSeed.UserID
+            WHERE BC_Seed.UserID = ". $currUser . "
+            AND BC_Exchange.Complete = 1"
+            ); // IK
+ 
+     $completedResult2 = mysqli_query($dblink,
+       "SELECT BC_Exchange.ID, BC_Exchange.Accepted,
+       BC_Listing.SeedID AS rSeedID, BC_Seed.UserID AS bUserID, BC_User.Username AS bUsername, BC_Seed.SeedName AS rSeedName, 
+       BarterListing.SeedID AS sSeedID, BarterSeed.UserID AS currUserID, BarterUser.Username as currUsername, BarterSeed.SeedName as sSeedName
+       FROM BC_Listing
+       INNER JOIN BC_Seed ON BC_Seed.ID = BC_Listing.SeedID
+       INNER JOIN BC_User ON BC_User.ID = BC_Seed.UserID
+       INNER JOIN BC_Request ON BC_Request.ListingID = BC_Listing.ID
+       INNER JOIN BC_Exchange ON BC_Exchange.RequestID = BC_Request.ID
+       INNER JOIN BC_Listing AS BarterListing ON BarterListing.ID = BC_Exchange.ListingIDtoBarter
+       INNER JOIN BC_Seed AS BarterSeed ON BarterSeed.ID = BarterListing.SeedID
+       INNER JOIN BC_User AS BarterUser ON BarterUser.ID = BarterSeed.UserID
+       WHERE BarterSeed.UserID = ". $currUser . "
+       AND BC_Exchange.Complete = 1"
+       ); // IK
+      // $completedResult = mysqli_query($dblink,"SELECT
+      //                   BC_User.Username,
+      //                   BC_Seed.SeedName,
+      //                   BC_Request.Requested,
+      //                   BC_Exchange.ID
+      //                   FROM((BC_User
+      //                       INNER JOIN BC_Seed ON BC_User.ID = BC_Seed.UserID)
+      //                   INNER JOIN BC_Request ON BC_User.ID = BC_Request.UserID)
+      //               INNER JOIN BC_Exchange ON BC_Request.ID = BC_Exchange.RequestID");
 
 
     include('exchangelist.html');

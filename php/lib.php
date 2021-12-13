@@ -48,10 +48,20 @@ function getRequestParam($parameter)
     return isset($_REQUEST[$parameter]) ? $_REQUEST[$parameter] : NULL;
 } // end getRequestParam
 
-// TODO: returns ID of user that is logged in
-function getCurrUserID()
-{
-    return 1;
-}
+// // TODO: returns ID of user that is logged in
+// function getCurrUserID()
+// {
+//     return 1;
+// }
 
+// execute sql insert / update
+
+function exeUpdate($dblink, $sql)
+{
+    $resQuery = mysqli_query($dblink, $sql);
+    if (!$resQuery) 
+    {
+        echo "<p>" . mysqli_error($dblink) . "</p>";
+    }
+} // end exeUpdate
 ?>

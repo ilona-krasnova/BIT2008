@@ -1,7 +1,14 @@
-  <article>
+<script>
+  function sendMessage()
+  {
+    $("#chatForm").submit();
+    console.log("sent message.");
+  } 
+</script>
+<article>
     <!-- title -->
     <h1 class="ui header">Congrats!</h1>
-    <h3 id="tagline">You are exchanging your Carrot seeds for Zucchini squash seeds from @GardenGal95</h3>
+    <h3 id="tagline">You are exchanging your <b><?=$sending['SeedName']?></b> seeds for <b><?=$receiving['SeedName']?></b> seeds from <b>@<?=$receiving['Username']?></b></h3>
     <hr />
     <!-- grid -->
     <div class="ui centered grid">
@@ -9,12 +16,12 @@
       <div class="four wide column">
         <div class="ui centered card">
           <div class="image">
-            <img src="img/gardengirl95.jpg">
+            <img src="img/user/<?=$receiving['UserID']?>">
           </div>
           <div class="content">
-            <a class="header" href="user.php">GardenGal95</a>
+            <a class="header" href="user.php?id=<?=$receiving['UserID']?>"><?=$receiving['Username']?></a>
             <div class="description">
-              1125 Colonel By Dr, Ottawa, ON K1S 5B6
+              <?=$receiving['Address']?>, <?=$receiving['PostalCode']?>
             </div>
           </div>
           <div class="extra content">
@@ -24,45 +31,33 @@
         </div>
       </div>
 
-      <!-- exchange 1 -->
+      <!-- Sending -->
       <div class="four wide column">
-        <a class="ui centered card" href="seed.php?id=1">
+        <a class="ui centered card" href="seed.php?id=<?=$sending['SeedID']?>">
           <div class="content">
             <div class="right floated meta">Sending</div>
-            <img class="ui avatar image" src="img/profilepicture.jpg"> Carrot
+            <b><?=$sending['SeedName']?></b>
           </div>
           <div class="image">
-            <img src="img/carrots.jpg" alt="Carrot">
+            <img src="img/seed/<?=$sending['SeedID']?>.jpg" alt="<?=$sending['SeedName']?>">
           </div>
           <div class="content">
-            <p>Quantity: </p>
-            <p>Type: Vegetable</p>
-            <p>Life Cycle: Biennial</p>
-            <p>Sun Requirements: Full sun</p>
-            <p>Maintenance: Low</p>
-            <p>Hardiness Zone: 3, 4, 5, 6, 7, 8, 9</p>
-            <p>Description: Easy to grow, just make sure you have sandy soil!</p>
+            <p>Description: <?=$sending['Description']?></p>
           </div>
         </a>
       </div>
-      <!-- exchange 2 -->
+      <!-- Receiving -->
       <div class="four wide column">
-        <a class="ui centered card" href="seed.php?id=1">
+        <a class="ui centered card" href="seed.php?id=<?=$receiving['SeedID']?>">
             <div class="content">
             <div class="right floated meta">Receiving</div>
-            <img class="ui avatar image" src="img/gardengirl95.jpg"> Zucchini squash
+            <b><?=$receiving['SeedName']?></b>
           </div>
           <div class="image">
-            <img src="img/squash.jpg" alt="Squash">
+            <img src="img/seed/<?=$receiving['SeedID']?>.jpg" alt="<?=$receiving['SeedName']?>">
           </div>
           <div class="content">
-            <p>Quantity: </p>
-            <p>Type: Vegetable</p>
-            <p>Life Cycle: Annual</p>
-            <p>Sun Requirements: Full sun</p>
-            <p>Maintenance: Low</p>
-            <p>Hardiness Zone: 3, 4, 5, 6, 7, 8, 9</p>
-            <p>Description: I started these indoors and they turned out delicious!</p>
+            <p>Description: <?=$receiving['Description']?></p>
           </div>
         </a>
       </div>
@@ -70,40 +65,32 @@
       <!-- comment column -->
       <div class="four wide column">
         <div class="ui comments">
+<?php 
+  foreach ($chat as $row) {
+?>
           <div class="comment">
             <a class="avatar">
-              <img src="img/gardengirl95.jpg">
+              <img src="img/user/<?=$row['UserID']?>.jpg">
             </a>
             <div class="content">
-              <a class="author"href="user.php">GardenGal95</a>
+              <a class="author"href="user.php?id=<?=$row['UserID']?>"><?=$row['Username']?></a>
               <div class="metadata">
-                <div class="date">2 days ago</div>
+                <div class="date"><?=$row['Timestamp']?></div>
               </div>
               <div class="text">
-                Hey, I just shipped out your seeds! :)
+                <?=$row['Message']?>
               </div>
             </div>
           </div>
-          <div class="comment">
-            <a class="avatar">
-              <img src="img/profilepicture.jpg">
-            </a>
-            <div class="content">
-              <a class="author"href="user.php">Blossom12</a>
-              <div class="metadata">
-                <div class="date">1 day ago</div>
-              </div>
-              <div class="text">
-                Great, thank you!
-              </div>
-            </div>
-          </div>
+<?php
+  }
+?>
           <!-- reply box -->
-          <form class="ui reply form">
+          <form id="chatForm" class="ui reply form" action="exchange.php?id=<?=$exchangeId?>" method="post">
             <div class="field">
-              <textarea></textarea>
+              <textarea id="chatMessage" name="message"></textarea>
             </div>
-            <div id="messageButton" class="ui primary submit labeled icon button">
+            <div id="messageButton" class="ui primary submit labeled icon button" onclick="sendMessage();">
               <i class="icon edit"></i> Write a Message
             </div>
             <!-- buttons -->

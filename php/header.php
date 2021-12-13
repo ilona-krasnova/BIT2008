@@ -58,8 +58,8 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
           <i class="large bars icon"></i>
           <div class="menu" tabindex="-1">
             <div class="item" id="userinfo">
-              <h3>Blossom12</h3>
-              <a href="user.php">View account</a>
+              <h3><?=$username?></h3>
+              <a href="user.php?id=<?=$currUser?>">View account</a>
             </div>
             <a class="item" href="catalogue.php"><i class="leaf icon"></i>Explore</a>
             <a class="item" href="newseed.php"><i class="plus icon"></i>Add listing</a>
@@ -67,7 +67,7 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
               <!-- <a class="item" href="catalogue.php?favourite=1"><i class="heart icon"></i>Favourites</a> -->
             <div class="divider"></div>
             <a class="item" href="help.php"><i class="life ring icon"></i>Help</a>
-            <a class="item" href="https://github.com/ilona-krasnova/BIT2008"><i class="github icon"></i></i>GitHub</a>
+            <a class="item" href="https://github.com/ilona-krasnova/BIT2008" target="_blank"><i class="github icon"></i></i>GitHub</a>
             
             <div class="divider"></div>
             <a class="item" href="logout.php">Sign Out</a>
@@ -80,12 +80,12 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
 
         <div class="right menu">
           <!-- user welcome -->
-          <a class="item" href="user.php">Hello, <?=$username?>!</a>
+          <a class="item" href="user.php?id=<?=$currUser?>">Hello, <?=$username?>!</a>
           <!-- search bar -->
           <div class="item">
-            <div class="ui action left icon input">
+            <!-- <div class="ui action left icon input">
               <i class="search icon"></i>
-              <input type="text" placeholder="Search">
+              <input type="text" placeholder="Search"> -->
             </div>
           </div>
         </div>
