@@ -115,23 +115,11 @@
     // $updateExchange = "UPDATE BC_Exchange SET Complete = 1 WHERE ID = " . $getID;
     // $update = mysqli_query($dblink, $updateExchange);
 
-?>
+// ?>
 
 <?php
     include('footer.php');
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 //BACKUP
