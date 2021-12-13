@@ -36,7 +36,8 @@
         <a class="ui centered card" href="seed.php?id=<?=$sending['SeedID']?>">
           <div class="content">
             <div class="right floated meta">Sending</div>
-            <b><?=$sending['SeedName']?></b>
+            <img class="ui avatar image" src="img/user/<?=$sending['UserID']?>.jpg">
+            <?=$sending['SeedName']?>
           </div>
           <div class="image">
             <img src="img/seed/<?=$sending['SeedID']?>.jpg" alt="<?=$sending['SeedName']?>">
@@ -51,13 +52,18 @@
         <a class="ui centered card" href="seed.php?id=<?=$receiving['SeedID']?>">
             <div class="content">
             <div class="right floated meta">Receiving</div>
-            <b><?=$receiving['SeedName']?></b>
+            <img class="ui avatar image" src="img/user/<?=$receiving['UserID']?>.jpg">
+            <?=$receiving['SeedName']?>
           </div>
           <div class="image">
             <img src="img/seed/<?=$receiving['SeedID']?>.jpg" alt="<?=$receiving['SeedName']?>">
           </div>
           <div class="content">
             <p>Description: <?=$receiving['Description']?></p>
+
+            <button class="ui fluid button" onclick="alert('TODO: Request rating to save in BC_ExchangeRating; When both ratings present, update BC_Exchange.Complete to 1')">
+              Mark as Received
+            </button>
           </div>
         </a>
       </div>
@@ -93,10 +99,6 @@
             <div id="messageButton" class="ui primary submit labeled icon button" onclick="sendMessage();">
               <i class="icon edit"></i> Write a Message
             </div>
-            <!-- buttons -->
-            <button class="ui button">
-              Mark as Received
-            </button>
           </form>
         </div>
       </div>

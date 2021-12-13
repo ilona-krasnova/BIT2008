@@ -1,0 +1,74 @@
+<article>
+    <h1 class="ui header">My Seeds
+        <a href="newseed.php">
+            <button class="right floated large ui positive button">
+                New Seed
+            </button>
+        </a>
+    </h1>
+    <hr />
+    <div class="ui six stackable cards">
+<?php
+foreach ($mySeeds as $row) {
+    $days = daysFromDate($row['Posted']);
+?>
+            <div class="ui card">
+                <div class="content">
+                    <!-- TODO: Edit seed feature :) In the beta version users can contact the admins. -->
+                    <div class="right floated meta"><u>Edit</u></div>
+                    <img class="ui avatar image" src="img/user/<?= $currUser?>.jpg"> 
+                    <?= $row['SeedName'] ?>
+                </div>
+                <div class="image">
+                    <img src="img/seed/<?= $row['SeedID'] ?>.jpg" alt="<?= $row['SeedName'] ?>">
+                </div>
+                <div class="content">
+<?php
+    if ($row['Active'])
+    {
+?>
+                    <a href="seed.php?id=<?= $row['ListingID'] ?>">
+                        <button class="ui button" type="button">
+                            Listed <?= $days ?> d
+                        </button>
+                    </a>
+                    <a href="myseeds.php?unlist=<?= $row['ListingID'] ?>">
+                        <button class="ui basic negative button" type="button">
+                            Mark unavailable
+                        </button>
+                    </a>
+<?php
+    }
+    else if ($row['ListingID'])
+    {
+?>
+                    <a href="myseeds.php?relist=<?= $row['ListingID'] ?>">
+                        <button class="ui basic positive button" type="button">
+                            List as available
+                        </button>
+                    </a>
+<?php
+    }
+    else
+    {
+?>
+                    <a href="myseeds.php?list=<?= $row['SeedID'] ?>">
+                        <button class="ui basic positive button" type="button">
+                            List as available
+                        </button>
+                    </a>
+<?php
+    }
+?>
+                </div>
+            </div>
+<?php
+}
+if (count($mySeeds) == 0)
+{
+    echo '<p>No seeds.</p>';
+}
+?>
+
+    </div>
+</article>

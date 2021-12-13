@@ -62,7 +62,7 @@ $username = exeSelectOne($dblink, "SELECT `Username` FROM `BC_User` WHERE `ID` =
               <a href="user.php?id=<?=$currUser?>">View account</a>
             </div>
             <a class="item" href="catalogue.php"><i class="leaf icon"></i>Explore</a>
-            <a class="item" href="newseed.php"><i class="plus icon"></i>Add listing</a>
+            <a class="item" href="myseeds.php"><i class="pencil alternate icon"></i>My seeds</a>
             <a class="item" href="exchangelist.php"><i class="exchange icon"></i>Exchanges</a>
               <!-- <a class="item" href="catalogue.php?favourite=1"><i class="heart icon"></i>Favourites</a> -->
             <div class="divider"></div>

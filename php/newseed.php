@@ -6,9 +6,6 @@
   //     echo $user['Username'] . "<br>";
   //   }
 
-    include('newseed.html');
-
-
     $seed = getRequestParam('SeedName');
     $amount = getRequestParam('quantity');
     $type = getRequestParam('type');
@@ -17,8 +14,22 @@
     $maint = getRequestParam('maintenance');
     $desc = getRequestParam('description');
 
-    $createNewSeedSQL = "INSERT INTO BC_Seed (UserID, SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID) VALUES (" . $currUser .  ",'"  .   $seed  .  "','"  .  $desc   .   "',"   .   $amount   .    ","   .    $type   .   ","    .   $cycle   .   ","   .   $sunReq   .   ","   .   $maint  .  ")";
-    $resQuery = mysqli_query($dblink, $createNewSeedSQL);
+    if ($seed) // IK
+    {
+      $createNewSeedSQL = "INSERT INTO BC_Seed (UserID, SeedName, Description, Quantity, PlantTypeID, LifeCycleID, SunID, MaintenanceID) VALUES (" . $currUser .  ",'"  .   $seed  .  "','"  .  $desc   .   "',"   .   $amount   .    ","   .    $type   .   ","    .   $cycle   .   ","   .   $sunReq   .   ","   .   $maint  .  ")";
+      $resQuery = mysqli_query($dblink, $createNewSeedSQL);
+      if ($resQuery) 
+      {
+        header("Location: myseeds.php");
+      }
+      else
+      {
+        echo(mysqli_error($dblink));
+      }
+    }
+
+    include('newseed.html');
+
 
 ?>
 

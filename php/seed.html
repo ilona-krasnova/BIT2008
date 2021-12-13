@@ -6,7 +6,7 @@
         <div class="ui centered grid">
             <div class="four wide column">
                 <!-- card -->
-                <div class="ui centered card">
+                <div class="ui fluid card">
                     <div class="content">
                         <div class="right floated meta"> </div> <!-- todo: use daysTillDate() from lib.php to update timestamp-->
                         <img class="ui avatar image" src="img/user/<?=$rows['UserID']?>"> <a href="user.php?id=<?=$rows['UserID']?>"> <?php echo $rows['Username'] ?> </a> <!-- Printing off username from database IK-->
@@ -16,12 +16,31 @@
                     </div>
                        <!--Printing off seed info from database-->
                     <div class="content">
-                        <p>Quantity: <?php echo $rowData['Quantity'] ?> </p>
-                        <p>Type: <?php echo $rowData['PlantType'] ?> </p>
-                        <p>Life Cycle: <?php echo $rowData['LifeCycle'] ?> </p>
-                        <p>Sun Requirements: <?php echo $rowData['Sun'] ?> </p>
-                        <p>Maintenance: <?php echo $rowData['Maintenance'] ?> </p>
-                        <p> Hardiness Zones: </p>
+<?php
+if ($rows['UserID'] != $currUser)
+{
+
+?>
+                      <!-- buttons -->
+                      <button class="large ui fluid positive button" onclick="alert('Developers ran out of time :(')">
+                        Request Exchange
+                      </button>
+                      <!-- <button class="large ui button">
+                        <i class="heart icon"></i> Favourite
+                      </button> -->
+<?php
+}
+?>
+                    </div>
+                </div>
+            </div>
+                      <div class="four wide column">
+                        <p style="margin-top:4em;"><b>Quantity</b>: <?php echo $rowData['Quantity'] ?> </p>
+                        <p><b>Type</b>: <?php echo $rowData['PlantType'] ?> </p>
+                        <p><b>Life Cycle</b>: <?php echo $rowData['LifeCycle'] ?> </p>
+                        <p><b>Sun Requirements</b>: <?php echo $rowData['Sun'] ?> </p>
+                        <p><b>Maintenance</b>: <?php echo $rowData['Maintenance'] ?> </p>
+                        <p><b>Hardiness Zones</b>: </p>
                         <!--Printing off $seedZone info-->
                         <?php
                           foreach ($seedZone as $row) {
@@ -29,20 +48,13 @@
                           }
                         ?>
                         <!--Printing off seed description-->
-                        <p>Description: <?php echo $rows['Description'] ?> </p>
-                    </div>
-                    <!-- buttons -->
-                    <button class="large ui positive button">
-                        Request Exchange
-                    </button>
-                    <button class="large ui button">
-                        <i class="heart icon"></i> Favourite
-                    </button>
-                </div>
-            </div>
+                        <br />
+                        <p><b>Description</b>: <?php echo $rows['Description'] ?> </p>
+                      </div>
+                      <div class="four wide column">
+                      
+                      <!--Comment section -->
 
-            <!--Comment section -->
-                <div class="six wide column">
                       <h3 id="newSeedDidactic">Comments</h3>
                       <div class="ui comments">
                               <!-- TODO: update the image to reflect the user ID (see img/user/<id>)

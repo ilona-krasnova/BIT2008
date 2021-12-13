@@ -3,6 +3,7 @@
     include('header.php');
     // include_once('comment.php');
 
+    // this is actually a "Seed with a listing", but we're in too deep to change the file names now.
     $listingId = getRequestParam('id');
 
     //seed info query
@@ -91,6 +92,22 @@
         break;
       }
     }
+
+
+    // Ran out of time; was about to write logic for request button -- IK
+  //   $alreadyRequested = exeSelectOne($dblink, 
+  //   "SELECT Rejected, Complete FROM BC_Listing 
+  //   LEFT OUTER JOIN BC_Request ON BC_Request.ListingID = BC_Listing.ID 
+  //   LEFT OUTER JOIN BC_Exchange ON BC_Exchange.RequestID = BC_Request.ID 
+  //   WHERE BC_Listing.ID = ".$listingId." AND UserID = ". $currUser
+  // );
+
+  // $rejected = $alreadyRequested['Rejected'];
+  // $complete = $alreadyRequested['Complete'];
+
+  // if (($rejected != 0)) {
+  //   # code...
+  // }
 
   include('seed.html');
   include('footer.php');
