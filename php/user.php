@@ -41,6 +41,8 @@
     //    echo "</table>";
     //  }
 
+     echo "</table>";
+
 ?>
 
 <?php
